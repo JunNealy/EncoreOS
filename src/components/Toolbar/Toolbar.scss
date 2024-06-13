@@ -1,9 +1,12 @@
-@import '../../styles/partials/variables.scss';
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
 
 .tool-bar {
+  @include flex(row, space-between, center);
   width: 100vw;
   background-color: $interface-gray;
-  height: 3rem;
+  height: 2.5rem;
   justify-self: flex-end;
   align-self: flex-end;
+  padding: 4px;
 }

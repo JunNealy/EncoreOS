@@ -3,4 +3,5 @@
 
 .system-tray {
   @include interface-border-click;
+  height: 90%;
 }
