@@ -1,0 +1,15 @@
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.button {
+  @include flex(row, center, center);
+  height: 98%;
+  @include interface-border;
+  background-color: $interface-gray;
+  padding: 1rem;
+  gap: 1rem;
+
+  &:active {
+    @include interface-border-click;
+  }
+}
