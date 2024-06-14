@@ -2,6 +2,8 @@
 @use '../../styles/partials/variables.scss' as *;
 
 .system-tray {
+  padding: 0 1rem;
+  @include flex(row, center, center);
   @include interface-border-click;
   height: 90%;
 }

@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
+
 import './TimeDisplay.scss';
-import { useState, useEffect } from 'react';
 
 const TimeDisplay = () => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     const tick = setInterval(() => {
@@ -14,17 +15,21 @@ const TimeDisplay = () => {
     };
   }, []);
 
+  let unconvertedHour = time.getHours();
   let hour = time.getHours() % 12;
-  console.log(typeof hour);
+  hour = hour === 0 ? 12 : hour;
 
   let minute = time.getMinutes();
 
-  // hour = hour.padStart('2', '0');
-  // minute = minute.padStart('2', '0');
+  let paddedHour = String(hour).padStart(2, '0');
+  let paddedMinute = String(minute).padStart(2, '0');
 
-  // console.log(hour, minute);
-
-  return <p>{`${hour}:${minute}`}</p>;
+  return (
+    <p>
+      {`${paddedHour}:${paddedMinute}` +
+        `${unconvertedHour >= 12 ? 'am' : 'pm'}`}
+    </p>
+  );
 };
 
 export default TimeDisplay;
