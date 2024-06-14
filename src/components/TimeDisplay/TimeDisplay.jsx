@@ -27,7 +27,7 @@ const TimeDisplay = () => {
   return (
     <p>
       {`${paddedHour}:${paddedMinute}` +
-        `${unconvertedHour >= 12 ? 'am' : 'pm'}`}
+        `${unconvertedHour >= 12 ? ' am' : ' pm'}`}
     </p>
   );
 };
