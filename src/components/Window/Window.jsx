@@ -1,15 +1,19 @@
-import { Children, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Window.scss';
+import { max } from 'three/examples/jsm/nodes/Nodes.js';
 
 const DraggableWindow = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
-
+  const [maxXY, setMaxXY] = useState({ maxX: 0, MaxY: 0 });
   const screen = document.querySelector('.screen');
-  const screenBounds = screen.getBoundingClientRect();
-  console.log(screenBounds);
+
+  useEffect(() => {
+    const screenBounds = screen.getBoundingClientRect();
+    setMaxXY({ maxX: screenBounds.width, MaxY: screenBounds.height });
+  });
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -31,11 +35,19 @@ const DraggableWindow = () => {
 
     if (newX < 0) {
       newX = 0;
+    } else if (newX < maxXY.maxX) {
+      newX = maxXY.maxX;
+    }
+
+    if (newY < 0) {
+      newY = 0;
+    } else if (newY < maxXY.MaxY) {
+      newY = maxXY.MaxY;
     }
 
     setPosition({
-      x: e.clientX - initialPosition.x,
-      y: e.clientY - initialPosition.y,
+      x: newX,
+      y: newY,
     });
   };
 
