@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Children, useState } from 'react';
 
 import './Window.scss';
 
@@ -6,6 +6,9 @@ const DraggableWindow = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
+
+  const screen = document.querySelector('.screen');
+  const screenBounds = screen.getBoundingClientRect();
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -19,8 +22,15 @@ const DraggableWindow = () => {
     setIsDragging(false);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (event) => {
     if (!isDragging) return;
+
+    let newX = event.clientX - initialPosition.x;
+    let newY = event.clientY - initialPosition.x;
+
+    if (newX < 0) {
+      newX = 0;
+    }
 
     setPosition({
       x: e.clientX - initialPosition.x,

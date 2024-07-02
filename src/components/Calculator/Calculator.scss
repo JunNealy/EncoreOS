@@ -1,0 +1,38 @@
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.calculator {
+  @include flex(column, center, center);
+
+  background-color: white;
+  height: 40rem;
+  min-width: 20rem;
+  &_file-bar {
+    border: 2px solid green;
+    height: 4rem;
+    width: 100%;
+  }
+  &_display {
+    @include interface-border;
+    height: 2rem;
+    width: 100%;
+    background-color: white;
+  }
+  &_buttons {
+    @include flex(column, center center);
+    width: 90%;
+    height: 100%;
+    border: 2px solid green;
+
+    &-row {
+      width: 100%;
+      border: 2px solid coral;
+
+      &-btn {
+        height: 2rem;
+        width: 25%;
+      }
+    }
+  }
+}
