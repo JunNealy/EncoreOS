@@ -1,6 +1,39 @@
-.window {
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+
+.draggable-window {
+  @include flex(column, flex-start, center);
   position: absolute;
-  height: 200px;
-  width: 200px;
-  background-color: red;
+  height: 60vh;
+  width: 33vw;
+  padding: 0.125rem 0.125rem 0 0.125rem;
+  background-color: gray;
+  @include interface-border;
+
+  &_title-bar {
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    @include flex(row, flex-end, space-between);
+    width: 100%;
+    height: 5%;
+    min-height: 1.5rem;
+    background-color: #000080;
+  }
+
+  &_app-frame-outer {
+    @include flex(column, center, center);
+    @include interface-border;
+    width: 97%;
+    height: 97%;
+    margin: 0.5rem 0;
+    background-color: gray;
+  }
+
+  &_app-frame-inner {
+    @include interface-border-click;
+    width: 95%;
+    height: 95%;
+
+    border: 2px solid green;
+    background-color: white;
+  }
 }
