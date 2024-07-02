@@ -9,6 +9,7 @@ const DraggableWindow = () => {
 
   const screen = document.querySelector('.screen');
   const screenBounds = screen.getBoundingClientRect();
+  console.log(screenBounds);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
