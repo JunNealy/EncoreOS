@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 import './Window.scss';
-import { max } from 'three/examples/jsm/nodes/Nodes.js';
 
 const DraggableWindow = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
-  const [maxXY, setMaxXY] = useState({ maxX: 0, MaxY: 0 });
-  const screen = document.querySelector('.screen');
+  const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
+
+  const screenRef = useRef(null);
 
   useEffect(() => {
-    const screenBounds = screen.getBoundingClientRect();
-    setMaxXY({ maxX: screenBounds.width, MaxY: screenBounds.height });
-  });
+    if (screenRef.current) {
+      const screenBounds = screenRef.current.getBoundingClientRect();
+      setMaxXY({ maxX: screenBounds.width, maxY: screenBounds.height });
+    }
+  }, [screenRef]);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -31,18 +33,18 @@ const DraggableWindow = () => {
     if (!isDragging) return;
 
     let newX = event.clientX - initialPosition.x;
-    let newY = event.clientY - initialPosition.x;
+    let newY = event.clientY - initialPosition.y;
 
     if (newX < 0) {
       newX = 0;
-    } else if (newX < maxXY.maxX) {
+    } else if (newX > maxXY.maxX) {
       newX = maxXY.maxX;
     }
 
     if (newY < 0) {
       newY = 0;
-    } else if (newY < maxXY.MaxY) {
-      newY = maxXY.MaxY;
+    } else if (newY > maxXY.maxY) {
+      newY = maxXY.maxY;
     }
 
     setPosition({
@@ -51,6 +53,14 @@ const DraggableWindow = () => {
     });
   };
 
+  // const handleWindowResize = () => {
+  //   if (screenRef.current) {
+  //     const screenBounds = screenRef.current.getBoundingClientRect();
+  //     setMaxXY({ maxX: screenBounds.width, maxY: screenBounds.height });
+  //   }
+  // };
+
+  // window.addEventListener('resize', handleWindowResize);
   return (
     <div
       className="draggable-window"
@@ -62,6 +72,7 @@ const DraggableWindow = () => {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
+      ref={screenRef} // Assign the ref here
     >
       <div className="draggable-window_title-bar">
         <button>x</button>

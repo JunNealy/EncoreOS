@@ -7,7 +7,7 @@
   height: 60vh;
   width: 33vw;
   padding: 0.125rem 0.125rem 0 0.125rem;
-  background-color: gray;
+  background-color: #c0c0c0;
   @include interface-border;
 
   &_title-bar {
@@ -25,7 +25,7 @@
     width: 97%;
     height: 97%;
     margin: 0.5rem 0;
-    background-color: gray;
+    background-color: #c0c0c0;
   }
 
   &_app-frame-inner {

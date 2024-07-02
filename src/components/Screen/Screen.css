@@ -1,9 +1,7 @@
-@use '../../styles/partials/variables.scss' as *;
-
 .screen {
   display: flex;
   position: relative;
   background-color: #008080;
-  height: calc(100vh - $toolbar-height);
+  height: calc(100vh - 3rem);
   width: 100vw;
-}
+}/*# sourceMappingURL=Screen.css.map */
