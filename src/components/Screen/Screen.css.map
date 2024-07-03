@@ -1,1 +1,10 @@
-{"version":3,"sources":["Screen.scss","Screen.css"],"names":[],"mappings":"AAEA;EACE,aAAA;EACA,kBAAA;EACA,yBAAA;EACA,0BAAA;EACA,YAAA;ACDF","file":"Screen.css"}
+{
+  "version": 3,
+  "sources": [
+    "Screen.scss",
+    "Screen.css"
+  ],
+  "names": [],
+  "mappings": "AAEA;EACE,aAAA;EACA,kBAAA;EACA,yBAAA;EACA,4BAAA;EACA,YAAA;ACDF",
+  "file": "Screen.css"
+}

@@ -1,7 +1,7 @@
 import Screen from './components/Screen/Screen';
 import Toolbar from './components/Toolbar/Toolbar';
 import './App.css';
-import './styles/partials/global.scss';
+import './styles/partials/_global.scss';
 
 function App() {
   return (

@@ -10,9 +10,9 @@ const Screen = () => {
 
   return (
     <div className="screen">
-      <Window>
-        <Calculator />
-      </Window>
+      <Window></Window>
+      <Window></Window>
+      <Window></Window>
     </div>
   );
 };

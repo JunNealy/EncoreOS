@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-
+import Calculator from '../Calculator/Calculator';
 import './Window.scss';
 
 const DraggableWindow = () => {
@@ -80,7 +80,9 @@ const DraggableWindow = () => {
         <button>[]</button>
       </div>
       <div className="draggable-window_app-frame-outer">
-        <div className="draggable-window_app-frame-inner"></div>
+        <div className="draggable-window_app-frame-inner">
+          <Calculator />
+        </div>
       </div>
     </div>
   );
