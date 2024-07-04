@@ -1,14 +1,12 @@
+import encoreLogo from '../../assets/copyENCORELOGOCANDIDATEpx10.png';
+
 import './Button.scss';
 
 const Button = () => {
   return (
     <button className="button">
-      <img
-        className="button__icon"
-        src="https://win98icons.alexmeub.com/icons/png/windows_slanted-1.png"
-        alt=""
-      />
-      <p className="button__text">dogs</p>
+      <img className="button__icon" src={encoreLogo} alt="" />
+      <p className="button__text">Start</p>
     </button>
   );
 };

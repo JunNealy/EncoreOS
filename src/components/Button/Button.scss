@@ -12,4 +12,9 @@
   &:active {
     @include interface-border-click;
   }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
 }

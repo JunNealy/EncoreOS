@@ -1,18 +1,28 @@
-import Toolbar from '../Toolbar/Toolbar';
+import { useEffect, useRef, useState } from 'react';
+
+import Chat from '../Chat/Chat';
 import Window from '../Window/Window';
-import Calculator from '../Calculator/Calculator';
-import { useState } from 'react';
 
 import './Screen.scss';
 
 const Screen = () => {
-  const [activeWindows, setActiveWindows] = useState([]);
+  const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
+  const screenRef = useRef(null);
+
+  useEffect(() => {
+    if (screenRef.current) {
+      const screenBounds = screenRef.current.getBoundingClientRect();
+      setMaxXY({ maxX: screenBounds.width, maxY: screenBounds.height });
+    }
+  }, []);
 
   return (
-    <div className="screen">
-      <Window></Window>
-      <Window></Window>
-      <Window></Window>
+    <div className="screen" ref={screenRef}>
+      <Window maxX={maxXY.maxX} maxY={maxXY.maxY} />
+      <Window maxX={maxXY.maxX} maxY={maxXY.maxY} />
+      <Window maxX={maxXY.maxX} maxY={maxXY.maxY} />
+
+      <Chat />
     </div>
   );
 };
