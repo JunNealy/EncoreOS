@@ -6,10 +6,19 @@ const Calculator = () => {
   const [equation, setEquation] = useState('');
 
   const handleClick = (event) => {
+    const solveExpression = (expression) => {
+      try {
+        expression = expression.replace(/X/g, '*');
+        return eval(expression);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     const buttonValue = event.target.innerText;
 
     if (buttonValue === '=') {
-      let calculatedVal = eval(equation);
+      let calculatedVal = solveExpression(equation);
       setEquation(calculatedVal);
       return;
     } else if (buttonValue === 'c') {
