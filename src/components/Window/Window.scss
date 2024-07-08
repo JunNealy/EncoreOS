@@ -18,20 +18,11 @@
     background-color: $interface-dark-blue;
   }
 
-  &_app-frame-outer {
+  &__application-frame {
     @include flex(column, center, center);
-    @include interface-border-raised;
-    width: 97%;
-    height: 97%;
+    width: 100%;
+    height: 100%;
     margin: 0.5rem 0;
-    background-color: #c0c0c0;
-  }
-
-  &_app-frame-inner {
-    @include interface-border-lowered;
-    width: 95%;
-    height: 95%;
-
-    background-color: white;
+    border: 2px solid coral;
   }
 }

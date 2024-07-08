@@ -71,8 +71,9 @@ const DraggableWindow = ({ maxX, maxY, label, zindex, onClick, appName }) => {
         <Button label={'X'} />
         <Button label={'X'} />
       </div>
+
       {appName === applicationIndex.Calculator && <Calculator />}
-      {appName === applicationIndex.Chat && <Chat />}
+      {/* {appName === applicationIndex.Chat} */}
     </div>
   );
 };
