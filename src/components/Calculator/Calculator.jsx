@@ -7,6 +7,15 @@ const Calculator = () => {
 
   const handleClick = (event) => {
     const buttonValue = event.target.innerText;
+
+    if (buttonValue === '=') {
+      let calculatedVal = eval(equation);
+      setEquation(calculatedVal);
+      return;
+    } else if (buttonValue === 'c') {
+      setEquation('');
+      return;
+    }
     setEquation((prevEquation) => prevEquation + buttonValue);
   };
 
