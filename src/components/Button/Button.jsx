@@ -1,9 +1,10 @@
 import './Button.scss';
 
 const Button = ({ icon, label, style, onClick }) => {
-  let buttonClass = 'button';
+  let buttonClass = '';
 
   if (!style) {
+    buttonClass = 'button';
     return;
   } else {
     buttonClass = ` ${style}`;

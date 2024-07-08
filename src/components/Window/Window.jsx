@@ -4,7 +4,7 @@ import Calculator from '../Calculator/Calculator';
 
 import './Window.scss';
 
-const DraggableWindow = ({ maxX, maxY }) => {
+const DraggableWindow = ({ maxX, maxY, label }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
@@ -48,7 +48,7 @@ const DraggableWindow = ({ maxX, maxY }) => {
 
   return (
     <div
-      className="draggable-window"
+      className="window"
       style={{
         left: position.x,
         top: position.y,
@@ -58,7 +58,8 @@ const DraggableWindow = ({ maxX, maxY }) => {
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
     >
-      <div className="draggable-window_title-bar">
+      <div className="window__title-bar">
+        <p className="window__title-bar-label">{label}</p>
         <Button label={'X'} />
         <Button label={'X'} />
         <Button label={'X'} />

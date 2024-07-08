@@ -2,7 +2,7 @@
 @use '../../styles/partials/global.scss' as *;
 @use '../../styles/partials/variables.scss' as *;
 
-.draggable-window {
+.window {
   @include flex(column, flex-start, center);
   position: absolute;
   background-color: $interface-gray;
@@ -11,7 +11,7 @@
   width: 33vw;
   padding: 2px;
 
-  &_title-bar {
+  &__title-bar {
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     @include flex(row, flex-end, space-between);
     width: 100%;
