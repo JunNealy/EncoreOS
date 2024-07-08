@@ -16,27 +16,32 @@ const Screen = () => {
   }, []);
 
   const startApplication = () => {
-    console.log('start app click');
     const newApplication = {
       id: openApplications.length + 1,
     };
     setOpenApplications([...openApplications, newApplication]);
   };
 
-  const closeApplication = (id) => {
-    setOpenApplications(
-      openApplications.filter((application) => application.id !== id)
-    );
+  const bringToFront = (id) => {
+    setOpenApplications((prevApps) => {
+      const appIndex = prevApps.findIndex((app) => app.id === id);
+      const updatedApps = [...prevApps];
+      const [movedApp] = updatedApps.splice(appIndex, 1);
+      updatedApps.push(movedApp);
+      return updatedApps;
+    });
   };
 
   return (
     <div className="screen" ref={screenRef}>
-      <button onClick={startApplication}>start calc</button>
-      <button onClick={() => closeApplication(openApplications.length)}>
-        end calc
-      </button>
+      <button onClick={startApplication}>Start Application</button>
       {openApplications.map((application) => (
-        <Window key={application.id} id={application.id} />;
+        <Window
+          key={application.id}
+          id={application.id}
+          zindex={application.id * 10} // Example of z-index assignment
+          onClick={() => bringToFront(application.id)}
+        />
       ))}
     </div>
   );

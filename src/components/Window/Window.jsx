@@ -4,12 +4,15 @@ import Calculator from '../Calculator/Calculator';
 
 import './Window.scss';
 
-const DraggableWindow = ({ maxX, maxY, label }) => {
+const DraggableWindow = ({ maxX, maxY, label, zindex, onClick }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
 
+  console.log(zindex);
+
   const handleMouseDown = (e) => {
+    onClick();
     setIsDragging(true);
     setInitialPosition({
       x: e.clientX - position.x,
@@ -53,6 +56,7 @@ const DraggableWindow = ({ maxX, maxY, label }) => {
         left: position.x,
         top: position.y,
         cursor: isDragging ? 'grabbing' : 'grab',
+        zIndex: { zindex },
       }}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
