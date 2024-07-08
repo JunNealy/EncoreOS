@@ -8,7 +8,7 @@
   width: 33vw;
   padding: 0.125rem 0.125rem 0 0.125rem;
   background-color: #c0c0c0;
-  @include interface-border;
+  @include interface-border-raised;
 
   &_title-bar {
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
@@ -21,7 +21,7 @@
 
   &_app-frame-outer {
     @include flex(column, center, center);
-    @include interface-border;
+    @include interface-border-raised;
     width: 97%;
     height: 97%;
     margin: 0.5rem 0;
@@ -29,7 +29,7 @@
   }
 
   &_app-frame-inner {
-    @include interface-border-click;
+    @include interface-border-lowered;
     width: 95%;
     height: 95%;
 

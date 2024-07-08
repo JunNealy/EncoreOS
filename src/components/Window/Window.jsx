@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
 
 import './Window.scss';
@@ -59,9 +59,9 @@ const DraggableWindow = ({ maxX, maxY }) => {
       onMouseMove={handleMouseMove}
     >
       <div className="draggable-window_title-bar">
-        <button>x</button>
-        <button>_</button>
-        <button>[]</button>
+        <Button label={'X'} />
+        <Button label={'X'} />
+        <Button label={'X'} />
       </div>
       <div className="draggable-window_app-frame-outer">
         <div className="draggable-window_app-frame-inner">
