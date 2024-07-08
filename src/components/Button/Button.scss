@@ -7,7 +7,6 @@
   background-color: $interface-gray;
   padding: 2px 4px;
   gap: 1rem;
-  max-width: fit-content;
 
   &:active {
     @include interface-border-lowered;
@@ -18,4 +17,10 @@
     width: 20px;
     height: 20px;
   }
+}
+
+.calc-button {
+  @extend .button;
+  color: red;
+  min-width: 25%;
 }

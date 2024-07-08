@@ -1,22 +1,21 @@
 @use '../../styles/partials/mixins.scss' as *;
 @use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
 
 .draggable-window {
   @include flex(column, flex-start, center);
   position: absolute;
+  background-color: $interface-gray;
+  @include interface-border-raised;
   height: 60vh;
   width: 33vw;
-  padding: 0.125rem 0.125rem 0 0.125rem;
-  background-color: #c0c0c0;
-  @include interface-border-raised;
+  padding: 2px;
 
   &_title-bar {
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     @include flex(row, flex-end, space-between);
     width: 100%;
-    height: 5%;
-    min-height: 1.5rem;
-    background-color: #000080;
+    background-color: $interface-dark-blue;
   }
 
   &_app-frame-outer {

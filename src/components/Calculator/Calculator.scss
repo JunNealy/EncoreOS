@@ -9,32 +9,14 @@
   background-color: white;
   height: 100%;
   width: 100%;
-  &_file-bar {
-    border: 2px solid green;
-    height: 4rem;
-    width: 100%;
-  }
+
   &_display {
+    @include flex(row, flex-end, center);
     @include interface-border-raised;
     height: 2rem;
     width: 100%;
     background-color: white;
-  }
-  &_buttons {
-    @include flex(column, center center);
-    width: 90%;
-    height: 100%;
-    border: 2px solid green;
-
-    &-row {
-      width: 100%;
-      border: 2px solid coral;
-
-      &-btn {
-        height: 2rem;
-        width: 25%;
-      }
-    }
+    padding: 4px;
   }
 }
 

@@ -63,11 +63,7 @@ const DraggableWindow = ({ maxX, maxY }) => {
         <Button label={'X'} />
         <Button label={'X'} />
       </div>
-      <div className="draggable-window_app-frame-outer">
-        <div className="draggable-window_app-frame-inner">
-          <Calculator />
-        </div>
-      </div>
+      <Calculator />
     </div>
   );
 };
