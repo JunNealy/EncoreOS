@@ -22,14 +22,14 @@
   align-items: $align;
 }
 
-@mixin interface-border {
+@mixin interface-border-raised {
   border-top: 2px solid $border-highlight;
   border-right: 2px solid $border-shaded;
   border-bottom: 2px solid $border-shaded;
   border-left: 2px solid $border-highlight;
 }
 
-@mixin interface-border-click {
+@mixin interface-border-lowered {
   border-top: 2px solid $border-shaded;
   border-right: 2px solid $border-highlight;
   border-bottom: 2px solid $border-highlight;

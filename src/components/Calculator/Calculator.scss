@@ -22,7 +22,7 @@
     width: 100%;
   }
   &_display {
-    @include interface-border;
+    @include interface-border-raised;
     height: 2rem;
     width: 100%;
     background-color: white;

@@ -3,13 +3,15 @@
 
 .button {
   @include flex(row, center, center);
-  @include interface-border;
+  @include interface-border-raised;
   background-color: $interface-gray;
   padding: 2px 4px;
   gap: 1rem;
+  max-width: fit-content;
 
   &:active {
-    @include interface-border-click;
+    @include interface-border-lowered;
+    background-color: $interface-gray-shaded;
   }
 
   &__icon {
