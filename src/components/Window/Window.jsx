@@ -1,10 +1,11 @@
 import { useState } from 'react';
+
 import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
 
 import './Window.scss';
 
-const DraggableWindow = ({ maxX, maxY, label, zindex, onClick }) => {
+const DraggableWindow = ({ maxX, maxY, label, zindex, onClick, appName }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
@@ -68,7 +69,7 @@ const DraggableWindow = ({ maxX, maxY, label, zindex, onClick }) => {
         <Button label={'X'} />
         <Button label={'X'} />
       </div>
-      <Calculator />
+      <{appName} />
     </div>
   );
 };
