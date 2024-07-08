@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
+import { applicationIndex } from '../../configs/applicationIdnex';
 import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
+import Chat from '../Chat/Chat';
 
 import './Window.scss';
 
@@ -69,7 +71,8 @@ const DraggableWindow = ({ maxX, maxY, label, zindex, onClick, appName }) => {
         <Button label={'X'} />
         <Button label={'X'} />
       </div>
-      <{appName} />
+      {appName === applicationIndex.Calculator && <Calculator />}
+      {appName === applicationIndex.Chat && <Chat />}
     </div>
   );
 };
