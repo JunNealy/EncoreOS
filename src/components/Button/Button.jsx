@@ -1,12 +1,10 @@
-import encoreLogo from '../../assets/copyENCORELOGOCANDIDATEpx10.png';
-
 import './Button.scss';
 
-const Button = () => {
+const Button = ({ icon, label }) => {
   return (
     <button className="button">
-      <img className="button__icon" src={encoreLogo} alt="" />
-      <p className="button__text">Start</p>
+      <img className="button__icon" src={icon} alt="" />
+      <p className="button__text">{label}</p>
     </button>
   );
 };

@@ -3,10 +3,9 @@
 
 .button {
   @include flex(row, center, center);
-  height: 98%;
   @include interface-border;
   background-color: $interface-gray;
-  padding: 1rem;
+  padding: 2px 4px;
   gap: 1rem;
 
   &:active {

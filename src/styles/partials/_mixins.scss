@@ -23,22 +23,22 @@
 }
 
 @mixin interface-border {
-  border-top: 1px solid $border-highlight;
-  border-right: 1px solid $border-shaded;
-  border-bottom: 1px solid $border-shaded;
-  border-left: 1px solid $border-highlight;
+  border-top: 2px solid $border-highlight;
+  border-right: 2px solid $border-shaded;
+  border-bottom: 2px solid $border-shaded;
+  border-left: 2px solid $border-highlight;
 }
 
 @mixin interface-border-click {
-  border-top: 1px solid $border-shaded;
-  border-right: 1px solid $border-highlight;
-  border-bottom: 1px solid $border-highlight;
-  border-left: 1px solid $border-shaded;
+  border-top: 2px solid $border-shaded;
+  border-right: 2px solid $border-highlight;
+  border-bottom: 2px solid $border-highlight;
+  border-left: 2px solid $border-shaded;
 }
 
 @mixin interface-border-inset {
-  border-top: 1px solid $border-shaded;
-  border-right: 1px solid $border-shaded;
-  border-bottom: 1px solid $border-shaded;
-  border-left: 1px solid $border-shaded;
+  border-top: 2px solid $border-shaded;
+  border-right: 2px solid $border-shaded;
+  border-bottom: 2px solid $border-shaded;
+  border-left: 2px solid $border-shaded;
 }
