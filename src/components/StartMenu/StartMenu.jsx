@@ -21,20 +21,6 @@ const StartMenu = ({ startApplication }) => {
           style={'start-button'}
         />
       ))}
-      {/* <button
-        onClick={() => {
-          startApplication(applicationIndex.Calculator);
-        }}
-      >
-        Start Calculator
-      </button>
-      <button
-        onClick={() => {
-          startApplication(applicationIndex.Chat);
-        }}
-      >
-        Start Chat
-      </button> */}
     </div>
   );
 };

@@ -6,6 +6,7 @@
   @include interface-border-raised;
   background-color: $interface-gray;
   padding: 2px 4px;
+  font-size: 1.25rem;
   gap: 1rem;
 
   &:active {
@@ -26,9 +27,17 @@
 }
 
 .start-button {
+  font-size: 1.25rem;
   @extend .button;
   @include flex(row, flex-start, center);
+  border: none;
   gap: 1rem;
   width: 100%;
-  background-color: red;
+  background-color: $interface-gray;
+
+  &:hover {
+    background-color: $interface-gray;
+    background-color: $interface-dark-blue;
+    color: white;
+  }
 }

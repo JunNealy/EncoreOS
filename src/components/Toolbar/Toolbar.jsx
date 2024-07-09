@@ -20,7 +20,7 @@ const Toolbar = ({
     <div className="tool-bar">
       <Button
         icon={encoreLogo}
-        label={'start'}
+        label={'Start'}
         onClick={handleClick}
         style={'button'}
       />

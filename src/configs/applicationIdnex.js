@@ -6,12 +6,12 @@ const applicationIndex = {
     {
       name: 'Calculator',
       app: Calculator,
-      icon: 'https://cdn4.vectorstock.com/i/1000x1000/13/93/isolated-happy-eyes-vector-22901393.jpg',
+      icon: './src/assets/icons/EncoreOS-Calc.png',
     },
     {
       name: 'Chat',
       app: Chat,
-      icon: 'https://cdn4.vectorstock.com/i/1000x1000/13/93/isolated-happy-eyes-vector-22901393.jpg',
+      icon: './src/assets/icons/EncoreOS-Messenger-Pigeon.png',
     },
   ],
 };

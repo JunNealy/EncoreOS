@@ -2,6 +2,7 @@
 @use '../../styles/partials/variables.scss' as *;
 
 .system-tray {
+  font-size: 1.25rem;
   padding: 0 1rem;
   @include flex(row, center, center);
   @include interface-border-lowered;
