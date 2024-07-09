@@ -49,20 +49,6 @@ const Screen = () => {
 
   return (
     <div className="screen" ref={screenRef}>
-      {/* <button
-        onClick={() => {
-          startApplication(applicationIndex.Calculator);
-        }}
-      >
-        Start Application
-      </button>
-      <button
-        onClick={() => {
-          startApplication(applicationIndex.Chat);
-        }}
-      >
-        open chat
-      </button> */}
       {openApplications.map((application) => (
         <Window
           key={application.id}
@@ -82,6 +68,7 @@ const Screen = () => {
         openApplications={openApplications}
         bringToFront={bringToFront}
         startApplication={startApplication}
+        displayStartMenu={displayStartMenu}
         setDisplayStartMenu={setDisplayStartMenu}
       />
       ;

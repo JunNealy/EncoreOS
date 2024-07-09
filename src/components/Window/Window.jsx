@@ -7,6 +7,8 @@ import Chat from '../Chat/Chat';
 
 import './Window.scss';
 
+const apps = applicationIndex.applications;
+
 const Window = ({
   maxX,
   maxY,
@@ -84,8 +86,8 @@ const Window = ({
       </div>
       <div className="window__application-frame">
         {' '}
-        {appName === applicationIndex.Calculator && <Calculator />}
-        {appName === applicationIndex.Chat && <Chat />}
+        {appName === apps[0].app && <Calculator />}
+        {appName === apps[1].app && <Chat />}
       </div>
     </div>
   );

@@ -24,3 +24,11 @@
 
   min-width: 25%;
 }
+
+.start-button {
+  @extend .button;
+  @include flex(row, flex-start, center);
+  gap: 1rem;
+  width: 100%;
+  background-color: red;
+}
