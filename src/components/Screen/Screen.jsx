@@ -36,8 +36,7 @@ const Screen = () => {
     });
   };
 
-  const closeWindow = (event) => {
-    const id = event.target.id;
+  const closeWindow = (id) => {
     console.log(id);
     console.log('cliced x');
     setOpenApplications((prevApplications) => {

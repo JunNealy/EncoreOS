@@ -15,6 +15,7 @@ const Window = ({
   onClick,
   appName,
   closeWindow,
+  id,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -72,8 +73,15 @@ const Window = ({
       onMouseMove={handleMouseMove}
     >
       <div className="window__title-bar">
-        <p className="window__title-bar-label">{label}</p>
-        <Button label={'X'} style={'button'} onClick={closeWindow} />
+        <p className="window__title-bar-label">{``}</p>
+        <Button
+          label={'X'}
+          style={'button'}
+          onClick={() => {
+            closeWindow(id);
+            console.log(id);
+          }}
+        />
       </div>
       <div className="window__application-frame">
         {' '}
