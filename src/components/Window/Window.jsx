@@ -7,7 +7,7 @@ import Chat from '../Chat/Chat';
 
 import './Window.scss';
 
-const DraggableWindow = ({ maxX, maxY, label, zindex, onClick, appName }) => {
+const Window = ({ maxX, maxY, label, zindex, onClick, appName }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
@@ -68,14 +68,14 @@ const DraggableWindow = ({ maxX, maxY, label, zindex, onClick, appName }) => {
       <div className="window__title-bar">
         <p className="window__title-bar-label">{label}</p>
         <Button label={'X'} />
-        <Button label={'X'} />
-        <Button label={'X'} />
       </div>
-
-      {appName === applicationIndex.Calculator && <Calculator />}
-      {/* {appName === applicationIndex.Chat} */}
+      <div className="window__application-frame">
+        {' '}
+        {appName === applicationIndex.Calculator && <Calculator />}
+        {appName === applicationIndex.Chat && <Chat />}
+      </div>
     </div>
   );
 };
 
-export default DraggableWindow;
+export default Window;

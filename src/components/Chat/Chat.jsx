@@ -32,8 +32,8 @@ function Chat() {
   };
 
   return (
-    <div className="App">
-      <div className="messages">
+    <div className="chat-app">
+      <div className="chat-app__messages">
         {messages.map((message, index) => (
           <div key={index} className="message">
             {message.text}
@@ -43,6 +43,7 @@ function Chat() {
         ))}
       </div>
       <input
+        className="chat-app__input"
         type="text"
         placeholder="Type a message..."
         value={currentMessage}

@@ -1,13 +1,22 @@
-.messages {
-  height: 10rem;
+.chat-app {
   width: 100%;
-  overflow-x: scroll;
-  background-color: white;
-  color: black;
-  border: 2px solid coral;
-}
+  height: 100%;
 
-.message {
-  background-color: coral;
-  border: 2px solid white;
+  &__messages {
+    height: 10rem;
+    width: 100%;
+    overflow-x: scroll;
+    background-color: white;
+    color: black;
+    border: 2px solid coral;
+    &-message {
+      width: 100%;
+      background-color: coral;
+      border: 2px solid white;
+    }
+  }
+
+  &__input {
+    width: 100%;
+  }
 }
