@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-
+import ChatMessage from '../ChatMessage/ChatMessage';
 import './Chat.scss';
 
 const socket = io('http://localhost:8080'); // Replace with your server URL
@@ -31,15 +31,18 @@ function Chat() {
     setCurrentMessage(event.target.value);
   };
 
+  console.log(messages);
+
   return (
     <div className="chat-app">
       <div className="chat-app__messages">
         {messages.map((message, index) => (
-          <div key={index} className="chat-app__messages-message">
-            {message.text}
-            {message.username}
-            {message.time}
-          </div>
+          <ChatMessage
+            key={index}
+            text={message.text}
+            sender={message.username}
+            time={message.time}
+          />
         ))}
       </div>
       <input

@@ -10,10 +10,10 @@ console.log(apps);
 const StartMenu = ({ startApplication }) => {
   return (
     <div className="start-menu">
-      {apps.map((application) => (
+      {apps.map((application, index) => (
         <Button
+          key={index}
           icon={application.icon}
-          key={application.index}
           onClick={() => {
             startApplication(application.app);
           }}
