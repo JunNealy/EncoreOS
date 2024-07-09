@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "System Font";
+  src: url("./src/assets/fonts/w95fa.woff2") format("woff2");
+  weight: 400;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+* {
+  font-family: "System Font";
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+.calculator_file-bar {
+  border: 2px solid green;
+  height: 4rem;
+  width: 100%;
+}
+.calculator_display {
+  border-top: 1px solid #fff8ee;
+  border-right: 1px solid #1f2020;
+  border-bottom: 1px solid #1f2020;
+  border-left: 1px solid #fff8ee;
+  height: 2rem;
+  width: 100%;
+  background-color: white;
+}
+.calculator_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  border: 2px solid green;
+}
+.calculator_buttons-row {
+  width: 100%;
+  border: 2px solid coral;
+}
+.calculator_buttons-row-btn {
+  height: 2rem;
+  width: 25%;
+}/*# sourceMappingURL=Calculator.css.map */

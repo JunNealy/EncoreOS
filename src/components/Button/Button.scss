@@ -3,13 +3,24 @@
 
 .button {
   @include flex(row, center, center);
-  height: 98%;
-  @include interface-border;
+  @include interface-border-raised;
   background-color: $interface-gray;
-  padding: 1rem;
+  padding: 2px 4px;
   gap: 1rem;
 
   &:active {
-    @include interface-border-click;
+    @include interface-border-lowered;
+    background-color: $interface-gray-shaded;
   }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.calc-button {
+  @extend .button;
+  color: red;
+  min-width: 25%;
 }

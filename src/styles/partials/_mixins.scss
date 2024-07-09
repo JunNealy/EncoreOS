@@ -1,0 +1,54 @@
+@use './variables.scss' as *;
+
+// ------------------------------ //
+// Break Points
+// ------------------------------ //
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin interface-border-raised {
+  border-top: 2px solid $border-highlight;
+  border-right: 2px solid $border-shaded;
+  border-bottom: 2px solid $border-shaded;
+  border-left: 2px solid $border-highlight;
+}
+
+@mixin interface-border-lowered {
+  border-top: 2px solid $border-shaded;
+  border-right: 2px solid $border-highlight;
+  border-bottom: 2px solid $border-highlight;
+  border-left: 2px solid $border-shaded;
+}
+
+@mixin interface-border-inset {
+  border-top: 2px solid $border-shaded;
+  border-right: 2px solid $border-shaded;
+  border-bottom: 2px solid $border-shaded;
+  border-left: 2px solid $border-shaded;
+}
+
+@mixin no-highlight {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

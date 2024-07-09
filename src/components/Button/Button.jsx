@@ -1,14 +1,19 @@
 import './Button.scss';
 
-const Button = () => {
+const Button = ({ icon, label, style, onClick }) => {
+  let buttonClass = '';
+
+  if (!style) {
+    buttonClass = 'button';
+    return;
+  } else {
+    buttonClass = ` ${style}`;
+  }
+
   return (
-    <button className="button">
-      <img
-        className="button__icon"
-        src="https://win98icons.alexmeub.com/icons/png/windows_slanted-1.png"
-        alt=""
-      />
-      <p className="button__text">dogs</p>
+    <button onClick={onClick} className={buttonClass}>
+      {icon ? <img className="button__icon" src={icon} alt="" /> : <></>}
+      <p className="button__text">{label}</p>
     </button>
   );
 };
