@@ -7,12 +7,18 @@ import Chat from '../Chat/Chat';
 
 import './Window.scss';
 
-const Window = ({ maxX, maxY, label, zindex, onClick, appName }) => {
+const Window = ({
+  maxX,
+  maxY,
+  label,
+  zindex,
+  onClick,
+  appName,
+  closeWindow,
+}) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
-
-  console.log(zindex);
 
   const handleMouseDown = (e) => {
     onClick();
@@ -67,7 +73,7 @@ const Window = ({ maxX, maxY, label, zindex, onClick, appName }) => {
     >
       <div className="window__title-bar">
         <p className="window__title-bar-label">{label}</p>
-        <Button label={'X'} />
+        <Button label={'X'} style={'button'} onClick={closeWindow} />
       </div>
       <div className="window__application-frame">
         {' '}

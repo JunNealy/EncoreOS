@@ -11,8 +11,6 @@ const Screen = () => {
   const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
   const screenRef = useRef(null);
 
-  console.log(openApplications);
-
   useEffect(() => {
     if (screenRef.current) {
       const screenBounds = screenRef.current.getBoundingClientRect();
@@ -35,6 +33,15 @@ const Screen = () => {
       const [movedApp] = updatedApps.splice(appIndex, 1);
       updatedApps.push(movedApp);
       return updatedApps;
+    });
+  };
+
+  const closeWindow = (event) => {
+    const id = event.target.id;
+    console.log(id);
+    console.log('cliced x');
+    setOpenApplications((prevApplications) => {
+      return prevApplications.filter((app) => app.id != id);
     });
   };
 
@@ -61,6 +68,7 @@ const Screen = () => {
           appName={application.name}
           zindex={application.id * 10} //leaving this as touchstone example for now, implmenet more robust in future maybe other things might need to move in z index other than windows and this seems unbounded?
           onClick={() => bringToFront(application.id)}
+          closeWindow={closeWindow}
         />
       ))}
     </div>
