@@ -33,7 +33,6 @@ const Calculator = () => {
       <div className="calculator_display">
         <p>{equation}</p>
       </div>
-
       <Numpad handleClick={handleClick} />
     </div>
   );

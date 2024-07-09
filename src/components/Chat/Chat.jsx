@@ -35,7 +35,7 @@ function Chat() {
     <div className="chat-app">
       <div className="chat-app__messages">
         {messages.map((message, index) => (
-          <div key={index} className="message">
+          <div key={index} className="chat-app__messages-message">
             {message.text}
             {message.username}
             {message.time}
