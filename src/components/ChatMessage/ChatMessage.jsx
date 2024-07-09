@@ -1,12 +1,14 @@
 import './ChatMessage.scss';
 
-const ChatMessage = (text, sender, time) => {
+const ChatMessage = ({ text, sender, time, msgStyle }) => {
   return (
-    <div className="message">
-      <p className="message__sender-date">
-        `${sender} - ${time}`
-      </p>
-      <p className="message__text">${text}</p>
+    <div className={`message ${msgStyle}`}>
+      <div className="message__details">
+        <p className="message__details-sender">{`${sender}`}</p>
+        <p className="message__details-time">{`sent at ${time}`}</p>
+      </div>
+
+      <p className="message__text">{`${text}`}</p>
     </div>
   );
 };

@@ -13,6 +13,7 @@ const StartMenu = ({ startApplication }) => {
       {apps.map((application, index) => (
         <Button
           key={index}
+          msgStyle={index % 2 != 0 ? 'plain' : 'highlight'}
           icon={application.icon}
           onClick={() => {
             startApplication(application.app);

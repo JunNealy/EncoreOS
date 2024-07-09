@@ -16,6 +16,14 @@
     @include flex(row, flex-end, space-between);
     width: 100%;
     background-color: $interface-dark-blue;
+
+    &-label {
+      font-size: 1.25rem;
+      padding-left: 0.25rem;
+      color: white;
+      @include flex(row, flex-start, center);
+      width: 100%;
+    }
   }
 
   &__application-frame {

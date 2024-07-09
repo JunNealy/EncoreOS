@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import ChatMessage from '../ChatMessage/ChatMessage';
 import './Chat.scss';
+import Button from '../Button/Button';
 
 const socket = io('http://localhost:8080'); // Replace with your server URL
 
@@ -31,8 +32,6 @@ function Chat() {
     setCurrentMessage(event.target.value);
   };
 
-  console.log(messages);
-
   return (
     <div className="chat-app">
       <div className="chat-app__messages">
@@ -45,14 +44,17 @@ function Chat() {
           />
         ))}
       </div>
-      <input
-        className="chat-app__input"
-        type="text"
-        placeholder="Type a message..."
-        value={currentMessage}
-        onChange={handlChange}
-      />
-      <button onClick={sendMessage}>Send</button>
+      <div className="chat-app__interface">
+        <input
+          className="chat-app__interface-input"
+          type="text"
+          placeholder="Type a message..."
+          value={currentMessage}
+          onChange={handlChange}
+        />
+
+        <Button onClick={sendMessage} style={'chat-button'} label={'Send'} />
+      </div>
     </div>
   );
 }

@@ -41,3 +41,8 @@
     color: white;
   }
 }
+
+.chat-button {
+  @extend .button;
+  min-width: fit-content;
+}
