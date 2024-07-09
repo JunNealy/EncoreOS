@@ -1,9 +1,11 @@
 @use '../../styles/partials/variables.scss' as *;
 
 .screen {
+  overflow-x: hide;
+  overflow-y: hide;
   display: flex;
   position: relative;
   background-color: #008080;
-  height: calc(100vh - $toolbar-height);
+  height: 100vh;
   width: 100vw;
 }

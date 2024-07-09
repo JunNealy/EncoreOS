@@ -3,6 +3,7 @@
 @use '../../styles/partials/mixins.scss' as *;
 
 .tool-bar {
+  @include no-highlight;
   @include flex(row, space-between, center);
   width: 100vw;
   padding: 2px;

@@ -79,7 +79,6 @@ const Window = ({
           style={'button'}
           onClick={() => {
             closeWindow(id);
-            console.log(id);
           }}
         />
       </div>

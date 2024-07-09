@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { applicationIndex } from '../../configs/applicationIdnex';
-import Chat from '../Chat/Chat';
+import StartMenu from '../StartMenu/StartMenu';
+// import Chat from '../Chat/Chat';
+import Toolbar from '../Toolbar/Toolbar';
 import Window from '../Window/Window';
 
 import './Screen.scss';
@@ -9,6 +11,7 @@ import './Screen.scss';
 const Screen = () => {
   const [openApplications, setOpenApplications] = useState([]);
   const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
+  const [displayStartMenu, setDisplayStartMenu] = useState(false);
   const screenRef = useRef(null);
 
   useEffect(() => {
@@ -46,7 +49,7 @@ const Screen = () => {
 
   return (
     <div className="screen" ref={screenRef}>
-      <button
+      {/* <button
         onClick={() => {
           startApplication(applicationIndex.Calculator);
         }}
@@ -59,7 +62,7 @@ const Screen = () => {
         }}
       >
         open chat
-      </button>
+      </button> */}
       {openApplications.map((application) => (
         <Window
           key={application.id}
@@ -70,6 +73,18 @@ const Screen = () => {
           closeWindow={closeWindow}
         />
       ))}
+      {displayStartMenu === true ? (
+        <StartMenu startApplication={startApplication} />
+      ) : (
+        <></>
+      )}
+      <Toolbar
+        openApplications={openApplications}
+        bringToFront={bringToFront}
+        startApplication={startApplication}
+        setDisplayStartMenu={setDisplayStartMenu}
+      />
+      ;
     </div>
   );
 };

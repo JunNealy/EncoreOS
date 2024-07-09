@@ -1,14 +1,17 @@
-import { useState } from 'react';
-
 import encoreLogo from '../../assets/copyENCORELOGOCANDIDATEpx10.png';
 import Button from '../Button/Button';
 import SystemTray from '../SystemTray/SystemTray';
 
 import './Toolbar.scss';
 
-const Toolbar = () => {
-  const [displayStartMenu, setDisplayStartMenu] = useState(false);
-
+const Toolbar = ({
+  openApplications,
+  bringToFront,
+  startApplication,
+  setDisplayStartMenu,
+  displayStartMenu,
+  setOpenApplications,
+}) => {
   const handleClick = () => {
     setDisplayStartMenu(!displayStartMenu);
   };
