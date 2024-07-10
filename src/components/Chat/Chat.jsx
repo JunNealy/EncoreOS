@@ -23,6 +23,8 @@ function Chat() {
         setMessages((prevMessages) => [...prevMessages, message]);
       });
 
+      openSocket.emit('joinChat', username);
+
       openSocket.on('disconnect', () => {
         console.log('socket closed');
       });
@@ -47,6 +49,8 @@ function Chat() {
   const handlChange = (event) => {
     setCurrentMessage(event.target.value);
   };
+
+  //connect to server, I believe the "join chat is arbitrary as long as both sides have functions that recognizes the same string it should work - CHECK DOCS"
 
   return (
     <div className="chat-app">
