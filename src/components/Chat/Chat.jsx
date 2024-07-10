@@ -7,13 +7,23 @@ import RegisterChat from '../RegisterChat/RegisterChat';
 
 import './Chat.scss';
 
-const socket = io('http://localhost:8080'); // Replace with your server URL
-
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
   const [username, setUsername] = useState('');
-  console.log(username);
+  const [socket, setSocket] = useState('');
+
+  //Firing twice due to react dev mode.
+  useEffect(() => {
+    if (username.trim() !== '') {
+      const openSocket = io('http:localhost:8080'); // Replace with your server URL -  env/prod to be clear
+      setSocket(openSocket);
+
+      openSocket.on('message', (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      });
+    }
+  }, [username]);
 
   const sendMessage = () => {
     if (currentMessage) {
@@ -25,14 +35,6 @@ function Chat() {
       setCurrentMessage('');
     }
   };
-
-  //Firing twice due to react dev mode.
-  useEffect(() => {
-    //message from server
-    socket.on('message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-  }, []);
 
   const handlChange = (event) => {
     setCurrentMessage(event.target.value);
