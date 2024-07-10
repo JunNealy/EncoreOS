@@ -6,12 +6,15 @@ import ChatMessage from '../ChatMessage/ChatMessage';
 import RegisterChat from '../RegisterChat/RegisterChat';
 
 import './Chat.scss';
+import chime from '../../assets/sound/dindong.mp3';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
   const [username, setUsername] = useState('');
   const [socket, setSocket] = useState('');
+
+  const notifcation = new Audio(chime);
 
   //Firing twice due to react dev mode.
   useEffect(() => {
@@ -21,6 +24,7 @@ function Chat() {
 
       openSocket.on('message', (message) => {
         setMessages((prevMessages) => [...prevMessages, message]);
+        notifcation.play();
       });
 
       openSocket.emit('joinChat', username);
