@@ -5,6 +5,10 @@ import './StartMenu.scss';
 
 const apps = applicationIndex.applications;
 
+const shutDown = () => {
+  close();
+};
+
 console.log(apps);
 
 const StartMenu = ({ startApplication }) => {
@@ -22,6 +26,10 @@ const StartMenu = ({ startApplication }) => {
           style={'start-button'}
         />
       ))}
+      <Button onClick={shutDown} label={'Shut Down'} style={'start-button'} />
+      <a href="#" onClick="history.go(-1);return true;">
+        Back
+      </a>
     </div>
   );
 };

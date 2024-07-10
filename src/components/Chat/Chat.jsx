@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import ChatMessage from '../ChatMessage/ChatMessage';
-import './Chat.scss';
+
 import Button from '../Button/Button';
+import ChatMessage from '../ChatMessage/ChatMessage';
+import RegisterChat from '../RegisterChat/RegisterChat';
+
+import './Chat.scss';
 
 const socket = io('http://localhost:8080'); // Replace with your server URL
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
+  const [username, setUsername] = useState('');
+  console.log(username);
 
   const sendMessage = () => {
     if (currentMessage) {
@@ -21,6 +26,7 @@ function Chat() {
     }
   };
 
+  //Firing twice due to react dev mode.
   useEffect(() => {
     //message from server
     socket.on('message', (message) => {
@@ -34,6 +40,7 @@ function Chat() {
 
   return (
     <div className="chat-app">
+      {username !== '' ? <></> : <RegisterChat setUsername={setUsername} />}
       <div className="chat-app__messages">
         {messages.map((message, index) => (
           <ChatMessage

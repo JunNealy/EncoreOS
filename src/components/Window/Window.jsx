@@ -61,11 +61,6 @@ const Window = ({
     });
   };
 
-  let applicationString = appName.toString().split(' ');
-  let applicationName = applicationString[1].slice(0, -1).slice(0, -1);
-
-  console.log(applicationName);
-
   return (
     <div
       className="window"
@@ -80,7 +75,7 @@ const Window = ({
       onMouseMove={handleMouseMove}
     >
       <div className="window__title-bar">
-        <p className="window__title-bar-label">{applicationName}</p>
+        <p className="window__title-bar-label"></p>
         <Button
           label={'X'}
           style={'button'}
