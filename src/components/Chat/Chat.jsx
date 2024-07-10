@@ -16,12 +16,20 @@ function Chat() {
   //Firing twice due to react dev mode.
   useEffect(() => {
     if (username.trim() !== '') {
-      const openSocket = io('http:localhost:8080'); // Replace with your server URL -  env/prod to be clear
+      const openSocket = io('http://localhost:8080'); // Replace with your server URL -  env/prod to be clear
       setSocket(openSocket);
 
       openSocket.on('message', (message) => {
         setMessages((prevMessages) => [...prevMessages, message]);
       });
+
+      openSocket.on('disconnect', () => {
+        console.log('socket closed');
+      });
+
+      return () => {
+        openSocket.disconnect();
+      };
     }
   }, [username]);
 
