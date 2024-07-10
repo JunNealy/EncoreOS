@@ -1,55 +1,85 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-import './Chat.scss';
+import Button from '../Button/Button';
+import ChatMessage from '../ChatMessage/ChatMessage';
+import RegisterChat from '../RegisterChat/RegisterChat';
 
-const socket = io('http://localhost:8080'); // Replace with your server URL
+import './Chat.scss';
+import chime from '../../assets/sound/dindong.mp3';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState('');
+  const [username, setUsername] = useState('');
+  const [socket, setSocket] = useState('');
+
+  const notifcation = new Audio(chime);
+
+  //Firing twice due to react dev mode.
+  useEffect(() => {
+    if (username.trim() !== '') {
+      const openSocket = io('http://localhost:8080'); // Replace with your server URL -  env/prod to be clear
+      setSocket(openSocket);
+
+      openSocket.on('message', (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+        notifcation.play();
+      });
+
+      openSocket.emit('joinChat', username);
+
+      openSocket.on('disconnect', () => {
+        console.log('socket closed');
+      });
+
+      return () => {
+        openSocket.disconnect();
+      };
+    }
+  }, [username]);
 
   const sendMessage = () => {
     if (currentMessage) {
       console.log(currentMessage);
       //send the submitted message to the server
-      socket.emit('chatMessage', currentMessage);
+      socket.emit('chatMessage', currentMessage, username);
       setMessages((prevMessages) => [...prevMessages, currentMessage]);
       // Clear the input field after sending
       setCurrentMessage('');
     }
   };
 
-  useEffect(() => {
-    //message from server
-    socket.on('message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    });
-  }, []);
-
   const handlChange = (event) => {
     setCurrentMessage(event.target.value);
   };
 
+  //connect to server, I believe the "join chat is arbitrary as long as both sides have functions that recognizes the same string it should work - CHECK DOCS"
+
   return (
     <div className="chat-app">
+      {username !== '' ? <></> : <RegisterChat setUsername={setUsername} />}
       <div className="chat-app__messages">
         {messages.map((message, index) => (
-          <div key={index} className="chat-app__messages-message">
-            {message.text}
-            {message.username}
-            {message.time}
-          </div>
+          <ChatMessage
+            key={index}
+            text={message.text}
+            sender={message.username}
+            time={message.time}
+          />
         ))}
       </div>
-      <input
-        className="chat-app__input"
-        type="text"
-        placeholder="Type a message..."
-        value={currentMessage}
-        onChange={handlChange}
-      />
-      <button onClick={sendMessage}>Send</button>
+      <div className="chat-app__interface">
+        <input
+          className="chat-app__interface-input"
+          type="text"
+          placeholder="Type a message..."
+          value={currentMessage}
+          onChange={handlChange}
+        />
+
+        <Button onClick={sendMessage} style={'chat-button'} label={'Send'} />
+      </div>
     </div>
   );
 }

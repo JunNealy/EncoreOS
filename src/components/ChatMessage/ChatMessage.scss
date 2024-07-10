@@ -1,0 +1,49 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+// <div className="message">
+//   <div className="message__details">
+//     <p className="message__details-sender">{`${sender}`}</p>
+//     <p className="message__details-sender">{`${time}`}</p>
+//   </div>
+
+//   <p className="message__text">{`${text}`}</p>
+// </div>
+.message {
+  @include flex(column, center, center);
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 0 1rem;
+
+  &__details {
+    width: 100%;
+    @include flex(row, flex-start, center);
+
+    &-sender {
+      @include flex(row, flex-start, center);
+      width: 100%;
+      font-weight: bold;
+    }
+    &-time {
+      @include flex(row, flex-end, center);
+      width: 100%;
+      font-size: 1rem;
+      color: #c7c2ba;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    @include flex(row, flex-start, center);
+  }
+}
+
+.plain {
+  background-color: white;
+}
+
+.highlight {
+  background-color: red;
+}

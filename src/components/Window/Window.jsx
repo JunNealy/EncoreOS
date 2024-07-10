@@ -75,7 +75,7 @@ const Window = ({
       onMouseMove={handleMouseMove}
     >
       <div className="window__title-bar">
-        <p className="window__title-bar-label">{``}</p>
+        <p className="window__title-bar-label"></p>
         <Button
           label={'X'}
           style={'button'}

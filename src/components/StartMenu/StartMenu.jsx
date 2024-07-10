@@ -5,15 +5,20 @@ import './StartMenu.scss';
 
 const apps = applicationIndex.applications;
 
+const shutDown = () => {
+  close();
+};
+
 console.log(apps);
 
 const StartMenu = ({ startApplication }) => {
   return (
     <div className="start-menu">
-      {apps.map((application) => (
+      {apps.map((application, index) => (
         <Button
+          key={index}
+          msgStyle={index % 2 != 0 ? 'plain' : 'highlight'}
           icon={application.icon}
-          key={application.index}
           onClick={() => {
             startApplication(application.app);
           }}
@@ -21,6 +26,10 @@ const StartMenu = ({ startApplication }) => {
           style={'start-button'}
         />
       ))}
+      <Button onClick={shutDown} label={'Shut Down'} style={'start-button'} />
+      <a href="#" onClick="history.go(-1);return true;">
+        Back
+      </a>
     </div>
   );
 };
