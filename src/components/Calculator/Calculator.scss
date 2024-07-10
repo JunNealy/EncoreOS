@@ -1,0 +1,32 @@
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.calculator {
+  @include flex(column, center, center);
+  @include no-highlight;
+
+  background-color: $interface-gray;
+  height: 100%;
+  width: 100%;
+
+  &_display {
+    @include flex(row, flex-end, center);
+    @include interface-border-lowered;
+    height: 2rem;
+    width: 100%;
+    background-color: white;
+    padding: 4px;
+    margin-bottom: 8px;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

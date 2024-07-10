@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "System Font";
+  src: url("./src/assets/fonts/w95fa.woff2") format("woff2");
+  weight: 400;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+* {
+  font-family: "System Font";
+}
+
+.draggable-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  height: 60vh;
+  width: 33vw;
+  padding: 0.125rem 0.125rem 0 0.125rem;
+  background-color: #c0c0c0;
+  border-top: 1px solid #fff8ee;
+  border-right: 1px solid #1f2020;
+  border-bottom: 1px solid #1f2020;
+  border-left: 1px solid #fff8ee;
+}
+.draggable-window_title-bar {
+  padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: space-between;
+  width: 100%;
+  height: 5%;
+  min-height: 1.5rem;
+  background-color: #000080;
+}
+.draggable-window_app-frame-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #fff8ee;
+  border-right: 1px solid #1f2020;
+  border-bottom: 1px solid #1f2020;
+  border-left: 1px solid #fff8ee;
+  width: 97%;
+  height: 97%;
+  margin: 0.5rem 0;
+  background-color: #c0c0c0;
+}
+.draggable-window_app-frame-inner {
+  border-top: 1px solid #1f2020;
+  border-right: 1px solid #fff8ee;
+  border-bottom: 1px solid #fff8ee;
+  border-left: 1px solid #1f2020;
+  width: 95%;
+  height: 95%;
+  background-color: white;
+}/*# sourceMappingURL=Window.css.map */

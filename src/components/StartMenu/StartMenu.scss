@@ -1,0 +1,13 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.start-menu {
+  @include no-highlight;
+  @include flex(column, center, center);
+  position: absolute;
+  bottom: 2.5rem;
+  background-color: $interface-gray;
+  @include interface-border-raised;
+}

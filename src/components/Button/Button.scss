@@ -1,15 +1,62 @@
-@use '../../styles/partials/mixins.scss' as *;
 @use '../../styles/partials/variables.scss' as *;
-
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
 .button {
   @include flex(row, center, center);
-  height: 98%;
-  @include interface-border;
+  @include interface-border-raised;
   background-color: $interface-gray;
-  padding: 1rem;
+  padding: 2px 4px;
+  font-size: 1.25rem;
   gap: 1rem;
 
   &:active {
-    @include interface-border-click;
+    @include interface-border-lowered;
+    background-color: $interface-gray-shaded;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.calc-button {
+  @extend .button;
+
+  min-width: 25%;
+}
+
+.start-button {
+  font-size: 1.25rem;
+  @extend .button;
+  @include flex(row, flex-start, center);
+  border: none;
+  gap: 1rem;
+  width: 100%;
+  background-color: $interface-gray;
+
+  &:hover {
+    background-color: $interface-gray;
+    background-color: $interface-dark-blue;
+    color: white;
+  }
+}
+
+.chat-button {
+  @extend .button;
+  min-width: fit-content;
+}
+
+.disabled {
+  @extend .button;
+  color: $interface-gray-shaded;
+  cursor: not-allowed;
+
+  &:active {
+    @include interface-border-raised;
+    color: $interface-gray-shaded;
+    background-color: $interface-gray;
+    cursor: not-allowed;
   }
 }

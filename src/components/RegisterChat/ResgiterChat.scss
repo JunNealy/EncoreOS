@@ -1,0 +1,48 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.register-window {
+  width: 50%;
+  @include flex(column, flex-start, center);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 800;
+  background-color: $interface-gray;
+
+  &__welcome {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+
+    &--orange {
+      color: $encore-orange;
+    }
+    &--blue {
+      color: $encore-blue;
+    }
+  }
+
+  &__cta {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  &__form {
+    @include flex(column, center, center);
+
+    &-input {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+//  (
+//     <div className="register-window">
+//       <p className="register-window__welcome">
+//         Welcome to Pigeon presented by EncoreOS
+//       </p>
+//       <p className="register-window__cta">

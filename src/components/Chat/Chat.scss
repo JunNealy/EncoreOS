@@ -1,0 +1,42 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.chat-app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__messages {
+    @include interface-border-lowered;
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: white;
+    color: black;
+  }
+
+  &__interface {
+    min-height: 2rem;
+    margin-top: 0.5rem;
+    @include flex(row);
+    width: 100%;
+    height: 20%;
+    &-input {
+      @include interface-border-lowered;
+      font-size: 1.25rem;
+      padding: 0.25rem;
+      width: 100%;
+      height: 100%;
+
+      text-align: left;
+      margin-right: 0.25rem;
+    }
+
+    &-send {
+      @include no-highlight;
+      width: 100%;
+    }
+  }
+}
