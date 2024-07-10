@@ -18,19 +18,27 @@ const RegisterChat = ({ setUsername }) => {
 
   return (
     <div className="register-window">
-      HELLLLOOOOOOO
-      <form action="">
+      <p className="register-window__welcome">
+        Welcome to Pigeon presented by Encore
+        <span className="register-window__welcome--orange">O</span>
+        <span className="register-window__welcome--blue">S</span>
+      </p>
+      <p className="register-window__cta">
+        Enter a username and join the conversation!
+      </p>
+      <form className="register-window__form" action="">
         <input
+          className="register-window__form-input"
           onChange={handleInput}
           type="text"
           name="username"
           id="username"
-          placeholder="please enter a user name"
+          placeholder="user name"
         />
 
         <Button
           label={'Join the chat'}
-          style={'button'}
+          style={usernameString <= 0 ? 'disabled' : 'button'}
           onClick={handleClick}
         />
       </form>

@@ -39,7 +39,7 @@ function Chat() {
     if (currentMessage) {
       console.log(currentMessage);
       //send the submitted message to the server
-      socket.emit('chatMessage', currentMessage);
+      socket.emit('chatMessage', currentMessage, username);
       setMessages((prevMessages) => [...prevMessages, currentMessage]);
       // Clear the input field after sending
       setCurrentMessage('');
