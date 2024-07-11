@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-
-import Button from '../Button/Button';
-
 import './WordPad.scss';
+import FileMenu from '../FileMenu/FileMenu';
+import Button from '../Button/Button';
+import { useState, useRef, useEffect } from 'react';
 
 const WordPad = ({ onMouseDown }) => {
   const inputRef = useRef(null);
@@ -19,10 +18,8 @@ const WordPad = ({ onMouseDown }) => {
   }, []);
 
   const saveData = () => {
-    const existingData = localData;
-
     const newData = {
-      ...existingData,
+      ...localData,
       [documentName]: {
         documentContent: inputRef.current.innerHTML,
       },
@@ -30,30 +27,10 @@ const WordPad = ({ onMouseDown }) => {
 
     setLocalData(newData);
     localStorage.setItem('wordpadData', JSON.stringify(newData));
-    console.log(localData);
   };
-
-  useEffect(() => {
-    const input = inputRef.current;
-    const handleInput = () => {
-      console.log('Input:', input.innerHTML);
-      setDocumentContent(input.innerHTML);
-
-      if (input.innerHTML.length > 3 && !stickyIsVisible) {
-        setStickyIsVisible(true);
-      }
-    };
-
-    input.addEventListener('input', handleInput);
-
-    return () => {
-      input.removeEventListener('input', handleInput);
-    };
-  }, []);
 
   const handleFormat = (formatCommand) => () => {
     document.execCommand(formatCommand, false, null);
-    console.log('clicked');
   };
 
   const handleFontSizeChange = (fontSize) => {
@@ -63,36 +40,38 @@ const WordPad = ({ onMouseDown }) => {
 
   const handleSelectFontSize = (event) => {
     setFontSize(event.target.value);
-    console.log(event.target.value);
     handleFontSizeChange(fontSize);
   };
 
-  const handleNameChage = (event) => {
+  const handleNameChange = (event) => {
     setDocumentName(event.target.value);
-    console.log(event.target.value);
   };
 
-  const handleFileClick = (event) => {
+  const handleFileClick = () => {
     setFileMenuIsVisible(!fileMenuIsVisible);
   };
 
-  // const handleSave = () => {};
+  const handleFileItemClick = (fileName, content) => {
+    setDocumentContent(content);
+    setFileMenuIsVisible(false);
+  };
+
+  if (documentContent.length > 5) {
+    setStickyIsVisible(true);
+  }
 
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
       <div className="wordpad__toolbar">
         <div className="wordpad__toolbar-file-options">
           <Button onClick={handleFileClick} label={'File'} style={'button'} />
-          {!fileMenuIsVisible ? (
-            <></>
-          ) : (
+          {fileMenuIsVisible && (
             <div className="wordpad__toolbar-file-options-file-menu">
+              <FileMenu files={localData} onItemClick={handleFileItemClick} />
               <Button
                 label={'Save'}
                 style={'start-button'}
-                onClick={() => {
-                  saveData();
-                }}
+                onClick={saveData}
               />
             </div>
           )}
@@ -100,9 +79,8 @@ const WordPad = ({ onMouseDown }) => {
             className="wordpad__toolbar-file-options-document-name"
             type="text"
             name="docName"
-            id="docNmae"
-            placeholder="file name"
-            onChange={handleNameChage}
+            placeholder="File name"
+            onChange={handleNameChange}
           />
         </div>
         <div className="wordpad__toolbar-styling">
@@ -123,8 +101,6 @@ const WordPad = ({ onMouseDown }) => {
           />
           <select
             className="wordpad__toolbar-styling-font-size"
-            name="font-size"
-            id="font-size"
             onChange={handleSelectFontSize}
           >
             <option value="1">S</option>
@@ -140,13 +116,13 @@ const WordPad = ({ onMouseDown }) => {
         ref={inputRef}
         className="wordpad__input"
         contentEditable="true"
-      ></div>
-
+        dangerouslySetInnerHTML={{ __html: documentContent }}
+      />
       {stickyIsVisible && (
         <img
           className="sticky"
-          src=" ./src//assets/images/Stickly1.png"
-          alt="it's sticky!"
+          src="./src/assets/images/Stickly1.png"
+          alt="It's sticky!"
         />
       )}
     </div>
