@@ -41,6 +41,12 @@
     background-color: $interface-dark-blue;
     color: white;
   }
+
+  &:active {
+    color: white;
+    background-color: $interface-dark-blue;
+    border: none;
+  }
 }
 
 .chat-button {

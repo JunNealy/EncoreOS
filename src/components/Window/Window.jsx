@@ -4,6 +4,7 @@ import { applicationIndex } from '../../configs/applicationIdnex';
 import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
 import Chat from '../Chat/Chat';
+import WordPad from '../WordPad/WordPad';
 
 import './Window.scss';
 
@@ -88,6 +89,7 @@ const Window = ({
         {' '}
         {appName === apps[0].app && <Calculator />}
         {appName === apps[1].app && <Chat />}
+        {appName === apps[2].app && <WordPad />}
       </div>
     </div>
   );
