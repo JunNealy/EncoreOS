@@ -1,6 +1,8 @@
-import './WordPad.scss';
+import { useEffect, useRef, useState } from 'react';
+
 import Button from '../Button/Button';
-import { useState, useEffect, useRef } from 'react';
+
+import './WordPad.scss';
 
 const WordPad = ({ onMouseDown }) => {
   const inputRef = useRef(null);
@@ -74,43 +76,52 @@ const WordPad = ({ onMouseDown }) => {
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
       <div className="wordpad__toolbar">
-        <input
-          type="text"
-          name="docName"
-          id="docNmae"
-          placeholder="file name"
-          onChange={handleNameChage}
-        />
-        <Button
-          label={'Bold'}
-          style={'start-button'}
-          onClick={handleFormat('bold')}
-        />
-        <Button
-          label={'Italic'}
-          style={'start-button'}
-          onClick={handleFormat('italic')}
-        />
-        <Button
-          label={'Underline'}
-          style={'start-button'}
-          onClick={handleFormat('underline')}
-        />
-        <Button
-          label={'Save'}
-          style={'start-button'}
-          onClick={() => {
-            saveData();
-          }}
-        />
-        <select name="font-size" id="font-size" onChange={handleSelectFontSize}>
-          <option value="1">S</option>
-          <option value="2">R</option>
-          <option value="3">L</option>
-          <option value="4">XL</option>
-          <option value="5">XXL</option>
-          <option value="6">XXXL</option>
-        </select>
+        <div className="wordpad__toolbar-file-options">
+          <input
+            type="text"
+            name="docName"
+            id="docNmae"
+            placeholder="file name"
+            onChange={handleNameChage}
+          />
+          <Button
+            label={'Save'}
+            style={'button'}
+            onClick={() => {
+              saveData();
+            }}
+          />
+        </div>
+        <div className="wordpad__toolbar-styling">
+          <Button
+            label={'B'}
+            style={'toolbar'}
+            onClick={handleFormat('bold')}
+          />
+          <Button
+            label={'I'}
+            style={'toolbar'}
+            onClick={handleFormat('italic')}
+          />
+          <Button
+            label={'U'}
+            style={'toolbar'}
+            onClick={handleFormat('underline')}
+          />
+          <select
+            className="wordpad__toolbar-styling-font-size"
+            name="font-size"
+            id="font-size"
+            onChange={handleSelectFontSize}
+          >
+            <option value="1">S</option>
+            <option value="2">R</option>
+            <option value="3">L</option>
+            <option value="4">XL</option>
+            <option value="5">XXL</option>
+            <option value="6">XXXL</option>
+          </select>
+        </div>
       </div>
       <div
         ref={inputRef}

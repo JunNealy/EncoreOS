@@ -66,3 +66,16 @@
     cursor: not-allowed;
   }
 }
+
+.toolbar {
+  @extend .button;
+  @include flex(row, center, center);
+  min-width: 40px;
+  padding: 0.25rem;
+  text-align: center;
+  background-color: $interface-gray;
+  font-weight: bold;
+}
+
+$border-highlight: #fff8ee;
+$border-shaded: #1f2020;

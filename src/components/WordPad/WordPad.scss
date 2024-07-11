@@ -8,7 +8,44 @@
   height: 100%;
 
   &__toolbar {
-    @include flex(row, center, center);
+    width: 100%;
+    @include flex(row, space-between, center);
+
+    &-file-options {
+      width: 100%;
+      @include flex(row, flex-start, center);
+    }
+
+    &-styling {
+      width: 100%;
+      @include flex(row, flex-end, center);
+
+      &-font-size {
+        margin-left: 1rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+        padding: 0.25rem;
+        border: none;
+        box-shadow: none;
+
+        &::before {
+          content: 'P';
+          display: inline-block;
+          background: green;
+          position: absolute;
+          right: -5px;
+          top: 2px;
+          z-index: 2;
+          width: 30px;
+          height: 26px;
+          text-align: center;
+          line-height: 26px;
+          border: 2px solid #ddd;
+          transform: rotate(90deg);
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   &__input {
