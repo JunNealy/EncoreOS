@@ -22,8 +22,18 @@ const Wyrm = () => {
         const isWyrm = wyrm.some(
           (segment) => segment.x === column && segment.y === row
         );
+        const isVillage = village.x === column && village.y === row;
+        columns.push(
+          <div
+            key={`${row}-${column}`}
+            className={`cell ${isWyrm ? 'wyrm' : ''} ${
+              isVillage ? village : ''
+            }`}
+          ></div>
+        );
       }
     }
+    board.push(<div key={row} className="row"></div>);
   };
 
   return <div className="wyrm"></div>;
