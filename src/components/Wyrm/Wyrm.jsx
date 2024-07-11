@@ -1,19 +1,20 @@
 //IMPORTS
 import { useState } from 'react';
+import './Wyrm.scss';
 
-//GAME INITIALIZATION VARIABLES
-const BOARD_SIZE = 15;
-//Maybe I can randomize these later?
+// GAME INITIALIZATION VARIABLES
+const BOARD_SIZE = 20;
+//Randomize these later on maybe?
 const STARTING_WYRM = [{ x: 2, y: 2 }];
-const FIRST_VILLAGE = [{ x: 5, y: 5 }];
+const FIRST_VILLAGE = { x: 5, y: 5 };
 
 const Wyrm = () => {
   const [wyrm, setWyrm] = useState(STARTING_WYRM);
-  const [wyrmDirection, setWyrmDirection] = useState([{}]); //add start coords once we can see the gameboard
+  const [wyrmDirection, setWyrmDirection] = useState({});
   const [village, setVillage] = useState(FIRST_VILLAGE);
   const [gameOver, setGameOver] = useState(false);
 
-  //BOARD LOGIC GOES HERE
+  // BOARD LOGIC GOES HERE
   const createBoard = () => {
     const board = [];
     for (let row = 0; row < BOARD_SIZE; row++) {
@@ -27,16 +28,21 @@ const Wyrm = () => {
           <div
             key={`${row}-${column}`}
             className={`cell ${isWyrm ? 'wyrm' : ''} ${
-              isVillage ? village : ''
+              isVillage ? 'village' : ''
             }`}
           ></div>
         );
       }
+      board.push(
+        <div key={row} className="row">
+          {columns}
+        </div>
+      );
     }
-    board.push(<div key={row} className="row"></div>);
+    return board;
   };
 
-  return <div className="wyrm"></div>;
+  return <div className="wyrm">{createBoard()}</div>;
 };
 
 export default Wyrm;
