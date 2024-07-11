@@ -1,0 +1,16 @@
+.folder {
+  overflow-y: scroll;
+}
+
+.file {
+  &:hover {
+    background-color: red;
+  }
+
+  &-name {
+    background-color: red;
+    &:hover {
+      background-color: red;
+    }
+  }
+}

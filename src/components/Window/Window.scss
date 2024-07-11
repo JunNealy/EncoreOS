@@ -7,9 +7,10 @@
   position: absolute;
   background-color: $interface-gray;
   @include interface-border-raised;
-
-  width: 33vw;
-  height: 60%;
+  overflow-y: auto;
+  width: 40vw;
+  min-height: 20rem;
+  height: 80%;
   padding: 2px;
 
   &__title-bar {
