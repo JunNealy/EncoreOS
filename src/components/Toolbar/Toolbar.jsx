@@ -7,10 +7,9 @@ import './Toolbar.scss';
 const Toolbar = ({
   openApplications,
   bringToFront,
-  startApplication,
+  focusedApp,
   setDisplayStartMenu,
   displayStartMenu,
-  setOpenApplications,
 }) => {
   const handleClick = () => {
     setDisplayStartMenu(!displayStartMenu);
@@ -26,27 +25,31 @@ const Toolbar = ({
           onClick={handleClick}
           style={!displayStartMenu ? 'button' : 'button-depressed'}
         />
-        {openApplications.map((application, index) => {
-          const appInfo = applicationIndex.applications.find(
-            (app) => app.app === application.name
-          );
-          if (!appInfo) {
-            console.error(
-              `No matching application found for displayName: ${application.name}`
+        <div className="tool-bar__buttons-open-applications">
+          {openApplications.map((application, index) => {
+            const appInfo = applicationIndex.applications.find(
+              (app) => app.app === application.name
             );
-            return null;
-          }
-          return (
-            <Button
-              key={index}
-              index={index}
-              icon={appInfo.icon}
-              label={appInfo.name}
-              style={'button'}
-              onClick={() => bringToFront(application.id)}
-            />
-          );
-        })}
+            if (!appInfo) {
+              console.error(
+                `No matching application found for displayName: ${application.name}`
+              );
+              return null;
+            }
+            return (
+              <Button
+                key={index}
+                index={index}
+                icon={appInfo.icon}
+                label={appInfo.name}
+                style={
+                  focusedApp != application.name ? 'button' : 'button-depressed'
+                }
+                onClick={() => bringToFront(application.id)}
+              />
+            );
+          })}
+        </div>
       </div>
       <SystemTray />
     </div>

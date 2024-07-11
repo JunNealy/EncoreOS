@@ -13,6 +13,7 @@ const Screen = () => {
   const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
   const [displayStartMenu, setDisplayStartMenu] = useState(false);
   const screenRef = useRef(null);
+  const [focusedApp, setFocusedApp] = useState('');
 
   useEffect(() => {
     if (screenRef.current) {
@@ -25,6 +26,10 @@ const Screen = () => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
     console.log(savedData);
   }, []);
+
+  useEffect(() => {
+    setFocusedApp(openApplications[0]);
+  }, [openApplications]);
 
   const startApplication = (appName) => {
     const newApplication = {
@@ -74,6 +79,7 @@ const Screen = () => {
         <></>
       )}
       <Toolbar
+        focusedApp={focusedApp}
         openApplications={openApplications}
         bringToFront={bringToFront}
         startApplication={startApplication}
