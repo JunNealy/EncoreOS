@@ -56,9 +56,14 @@ const WordPad = ({ onMouseDown }) => {
     setFileMenuIsVisible(false);
   };
 
-  if (documentContent.length > 5) {
-    setStickyIsVisible(true);
-  }
+  useEffect(() => {
+    console.log(documentContent.length);
+    if (documentContent.length > 5) {
+      setStickyIsVisible(true);
+    } else {
+      setStickyIsVisible(false);
+    }
+  }, [documentContent]);
 
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
