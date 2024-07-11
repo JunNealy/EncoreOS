@@ -62,6 +62,10 @@ const Window = ({
     });
   };
 
+  const handleNonDraggableChild = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <div
       className="window"
@@ -89,7 +93,9 @@ const Window = ({
         {' '}
         {appName === apps[0].app && <Calculator />}
         {appName === apps[1].app && <Chat />}
-        {appName === apps[2].app && <WordPad />}
+        {appName === apps[2].app && (
+          <WordPad onMouseDown={handleNonDraggableChild} />
+        )}
       </div>
     </div>
   );
