@@ -42,7 +42,7 @@ const Wyrm = () => {
     return board;
   };
 
-  return <div className="wyrm">{createBoard()}</div>;
+  return <div className="wyrm-game">{createBoard()}</div>;
 };
 
 export default Wyrm;

@@ -2,23 +2,24 @@
 @use '../../styles/partials/variables.scss' as *;
 @use '../../styles/partials/mixins.scss' as *;
 
-.wyrm {
+.wyrm-game {
   @include flex(column, center, center);
 }
 
 .row {
-  display: flex;
   @include flex(row, flex-start, center);
 }
 
 .cell {
   width: 20px;
   height: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
 }
 
 .wyrm {
-  background-color: green;
+  background-image: url('./src/assets/images/aacd80bc5dfb9ee-84314742.png');
+  background-position: center;
+  background-size: contain;
 }
 
 .village {
