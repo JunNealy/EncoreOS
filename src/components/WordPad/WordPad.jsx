@@ -5,7 +5,26 @@ import { useState, useEffect, useRef } from 'react';
 const WordPad = (onMouseDown) => {
   const inputRef = useRef(null);
   const [documentContent, setDocumentContent] = useState('');
+  const [documentName, setDocumentName] = useState('');
   const [fontSize, setFontSize] = useState('');
+  const [localData, setLocalData] = useState({});
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
+    setLocalData(savedData);
+  }, []);
+
+  const saveData = () => {
+    const newData = {
+      documentName: documentName,
+      documentContent: inputRef.current.innerHTML,
+    };
+
+    const updatedData = { ...localData, ...newData };
+    setLocalData(updatedData);
+    localStorage.setItem('wordpadData', JSON.stringify(updatedData));
+    console.log(localData);
+  };
 
   useEffect(() => {
     const input = inputRef.current;
@@ -37,9 +56,23 @@ const WordPad = (onMouseDown) => {
     handleFontSizeChange(fontSize);
   };
 
+  const handleNameChage = (event) => {
+    setDocumentName(event.target.value);
+    console.log(event.target.value);
+  };
+
+  // const handleSave = () => {};
+
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
       <div className="wordpad__toolbar">
+        <input
+          type="text"
+          name="docName"
+          id="docNmae"
+          placeholder="file name"
+          onChange={handleNameChage}
+        />
         <Button
           label={'Bold'}
           style={'start-button'}
@@ -54,6 +87,13 @@ const WordPad = (onMouseDown) => {
           label={'Underline'}
           style={'start-button'}
           onClick={handleFormat('underline')}
+        />
+        <Button
+          label={'Save'}
+          style={'start-button'}
+          onClick={() => {
+            saveData();
+          }}
         />
         <select name="font-size" id="font-size" onChange={handleSelectFontSize}>
           <option value="1">S</option>

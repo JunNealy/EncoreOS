@@ -19,6 +19,7 @@ const Window = ({
   appName,
   closeWindow,
   id,
+  saveData,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -94,7 +95,7 @@ const Window = ({
         {appName === apps[0].app && <Calculator />}
         {appName === apps[1].app && <Chat />}
         {appName === apps[2].app && (
-          <WordPad onMouseDown={handleNonDraggableChild} />
+          <WordPad onMouseDown={handleNonDraggableChild} saveData={saveData} />
         )}
       </div>
     </div>
