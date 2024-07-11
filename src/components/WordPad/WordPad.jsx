@@ -2,12 +2,13 @@ import './WordPad.scss';
 import Button from '../Button/Button';
 import { useState, useEffect, useRef } from 'react';
 
-const WordPad = (onMouseDown) => {
+const WordPad = ({ onMouseDown }) => {
   const inputRef = useRef(null);
   const [documentContent, setDocumentContent] = useState('');
   const [documentName, setDocumentName] = useState('');
   const [fontSize, setFontSize] = useState('');
   const [localData, setLocalData] = useState({});
+  const [stickyIsVisible, setStickyIsVisible] = useState(false);
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
@@ -15,14 +16,17 @@ const WordPad = (onMouseDown) => {
   }, []);
 
   const saveData = () => {
+    const existingData = localData;
+
     const newData = {
-      documentName: documentName,
-      documentContent: inputRef.current.innerHTML,
+      ...existingData,
+      [documentName]: {
+        documentContent: inputRef.current.innerHTML,
+      },
     };
 
-    const updatedData = { ...localData, ...newData };
-    setLocalData(updatedData);
-    localStorage.setItem('wordpadData', JSON.stringify(updatedData));
+    setLocalData(newData);
+    localStorage.setItem('wordpadData', JSON.stringify(newData));
     console.log(localData);
   };
 
@@ -31,6 +35,10 @@ const WordPad = (onMouseDown) => {
     const handleInput = () => {
       console.log('Input:', input.innerHTML);
       setDocumentContent(input.innerHTML);
+
+      if (input.innerHTML.length > 3 && !stickyIsVisible) {
+        setStickyIsVisible(true);
+      }
     };
 
     input.addEventListener('input', handleInput);
@@ -109,6 +117,14 @@ const WordPad = (onMouseDown) => {
         className="wordpad__input"
         contentEditable="true"
       ></div>
+
+      {stickyIsVisible && (
+        <img
+          className="sticky"
+          src=" ./src//assets/images/Stickly1.png"
+          alt="it's sticky!"
+        />
+      )}
     </div>
   );
 };

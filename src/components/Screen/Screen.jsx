@@ -21,6 +21,11 @@ const Screen = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
+    console.log(savedData);
+  }, []);
+
   const startApplication = (appName) => {
     const newApplication = {
       id: openApplications.length + 1,
