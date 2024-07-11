@@ -27,9 +27,6 @@ const StartMenu = ({ startApplication }) => {
         />
       ))}
       <Button onClick={shutDown} label={'Shut Down'} style={'start-button'} />
-      <a href="#" onClick="history.go(-1);return true;">
-        Back
-      </a>
     </div>
   );
 };

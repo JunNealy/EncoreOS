@@ -56,10 +56,10 @@ const WordPad = (onMouseDown) => {
           onClick={handleFormat('underline')}
         />
         <select name="font-size" id="font-size" onChange={handleSelectFontSize}>
-          <option value="2">S</option>
-          <option value="1">R</option>
-          <option value="4">L</option>
-          <option value="3">XL</option>
+          <option value="1">S</option>
+          <option value="2">R</option>
+          <option value="3">L</option>
+          <option value="4">XL</option>
           <option value="5">XXL</option>
           <option value="6">XXXL</option>
         </select>
