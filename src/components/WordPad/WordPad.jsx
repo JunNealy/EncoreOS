@@ -11,6 +11,7 @@ const WordPad = ({ onMouseDown }) => {
   const [fontSize, setFontSize] = useState('');
   const [localData, setLocalData] = useState({});
   const [stickyIsVisible, setStickyIsVisible] = useState(false);
+  const [fileMenuIsVisible, setFileMenuIsVisible] = useState(false);
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
@@ -71,25 +72,37 @@ const WordPad = ({ onMouseDown }) => {
     console.log(event.target.value);
   };
 
+  const handleFileClick = (event) => {
+    setFileMenuIsVisible(!fileMenuIsVisible);
+  };
+
   // const handleSave = () => {};
 
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
       <div className="wordpad__toolbar">
         <div className="wordpad__toolbar-file-options">
+          <Button onClick={handleFileClick} label={'File'} style={'button'} />
+          {!fileMenuIsVisible ? (
+            <></>
+          ) : (
+            <div className="wordpad__toolbar-file-options-file-menu">
+              <Button
+                label={'Save'}
+                style={'start-button'}
+                onClick={() => {
+                  saveData();
+                }}
+              />
+            </div>
+          )}
           <input
+            className="wordpad__toolbar-file-options-document-name"
             type="text"
             name="docName"
             id="docNmae"
             placeholder="file name"
             onChange={handleNameChage}
-          />
-          <Button
-            label={'Save'}
-            style={'button'}
-            onClick={() => {
-              saveData();
-            }}
           />
         </div>
         <div className="wordpad__toolbar-styling">
