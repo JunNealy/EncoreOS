@@ -6,17 +6,18 @@
   @include flex(column, center, center);
   @include no-highlight;
 
-  background-color: white;
+  background-color: $interface-gray;
   height: 100%;
   width: 100%;
 
   &_display {
     @include flex(row, flex-end, center);
-    @include interface-border-raised;
+    @include interface-border-lowered;
     height: 2rem;
     width: 100%;
     background-color: white;
     padding: 4px;
+    margin-bottom: 8px;
   }
 }
 

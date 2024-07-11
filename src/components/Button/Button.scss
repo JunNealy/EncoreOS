@@ -1,6 +1,7 @@
-@use '../../styles/partials/mixins.scss' as *;
 @use '../../styles/partials/variables.scss' as *;
-
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
 .button {
   @include flex(row, center, center);
   @include interface-border-raised;
@@ -40,4 +41,41 @@
     background-color: $interface-dark-blue;
     color: white;
   }
+
+  &:active {
+    color: white;
+    background-color: $interface-dark-blue;
+    border: none;
+  }
 }
+
+.chat-button {
+  @extend .button;
+  min-width: fit-content;
+}
+
+.disabled {
+  @extend .button;
+  color: $interface-gray-shaded;
+  cursor: not-allowed;
+
+  &:active {
+    @include interface-border-raised;
+    color: $interface-gray-shaded;
+    background-color: $interface-gray;
+    cursor: not-allowed;
+  }
+}
+
+.toolbar {
+  @extend .button;
+  @include flex(row, center, center);
+  min-width: 40px;
+  padding: 0.25rem;
+  text-align: center;
+  background-color: $interface-gray;
+  font-weight: bold;
+}
+
+$border-highlight: #fff8ee;
+$border-shaded: #1f2020;

@@ -21,6 +21,11 @@ const Screen = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
+    console.log(savedData);
+  }, []);
+
   const startApplication = (appName) => {
     const newApplication = {
       id: openApplications.length + 1,
@@ -54,7 +59,7 @@ const Screen = () => {
           key={application.id}
           id={application.id}
           appName={application.name}
-          zindex={application.id * 10} //leaving this as touchstone example for now, implmenet more robust in future maybe other things might need to move in z index other than windows and this seems unbounded?
+          zindex={application.id * 10}
           onClick={() => bringToFront(application.id)}
           closeWindow={closeWindow}
         />
