@@ -24,7 +24,7 @@ const Toolbar = ({
           icon={encoreLogo}
           label={'Start'}
           onClick={handleClick}
-          style={'button'}
+          style={!displayStartMenu ? 'button' : 'button-depressed'}
         />
         {openApplications.map((application, index) => (
           <Button

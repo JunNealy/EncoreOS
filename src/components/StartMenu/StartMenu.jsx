@@ -8,14 +8,11 @@ const shutDown = () => {
   close();
 };
 
-console.log(apps);
-
 const StartMenu = ({ startApplication, setDisplayStartMenu }) => {
   const startMenuRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      //trying to close via short circuting
       if (
         startMenuRef.current &&
         !startMenuRef.current.contains(event.target)
