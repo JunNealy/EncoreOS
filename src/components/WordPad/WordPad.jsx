@@ -5,17 +5,30 @@ import { useState, useEffect, useRef } from 'react';
 const WordPad = () => {
   const inputRef = useRef(null);
   const [documentContent, setDocumentContent] = useState('');
+  const [fontSize, setFontSize] = useState('');
 
-  const input = inputRef.current;
+  useEffect(() => {
+    const input = inputRef.current;
+    const handleInput = () => {
+      console.log('Input:', input.innerHTML);
+      setDocumentContent(input.innerHTML);
+    };
 
-  const handleInput = () => {
-    console.log('Input:', input.innerHtml);
-    setDocumentContent(input.innerHtml);
+    input.addEventListener('input', handleInput);
+
+    return () => {
+      input.removeEventListener('input', handleInput);
+    };
+  }, []);
+
+  const handleFormat = (formatCommand) => () => {
+    document.execCommand(formatCommand, false, null);
+    console.log('clicked');
   };
 
-  const handleFormat = (formatCommand) => {
-    document.execCommand(formatCommand, false, null);
-    console.log('cliced');
+  const handleSelectFontSize = (event) => {
+    setFontSize(event.target.value);
+    console.log(event.target.value);
   };
 
   return (
@@ -36,12 +49,20 @@ const WordPad = () => {
           style={'start-button'}
           onClick={handleFormat('underline')}
         />
+        <select name="font-size" id="font-size" onChange={handleSelectFontSize}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
       </div>
       <div
-        ref={input}
+        ref={inputRef}
         className="wordpad__input"
         contentEditable="true"
-        onChange={handleInput}
       ></div>
     </div>
   );
