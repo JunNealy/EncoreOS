@@ -18,12 +18,25 @@ const Toolbar = ({
 
   return (
     <div className="tool-bar">
-      <Button
-        icon={encoreLogo}
-        label={'Start'}
-        onClick={handleClick}
-        style={'button'}
-      />
+      <div className="tool-bar__buttons">
+        <Button
+          className="tool-bar__buttons-start"
+          icon={encoreLogo}
+          label={'Start'}
+          onClick={handleClick}
+          style={'button'}
+        />
+        {openApplications.map((application, index) => (
+          <Button
+            key={index}
+            index={index}
+            icon={'test'}
+            label={'test'}
+            style={'button'}
+            onClick={bringToFront}
+          />
+        ))}
+      </div>
       <SystemTray />
     </div>
   );

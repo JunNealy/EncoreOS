@@ -4,6 +4,7 @@
 @use '../../styles/partials/typography.scss' as *;
 
 .chat-app {
+  isolation: isolate;
   position: relative;
   width: 100%;
   height: 100%;
