@@ -32,6 +32,7 @@ const Screen = () => {
       name: appName,
     };
     setOpenApplications([...openApplications, newApplication]);
+    setDisplayStartMenu(false);
   };
 
   const bringToFront = (id) => {
@@ -65,7 +66,10 @@ const Screen = () => {
         />
       ))}
       {displayStartMenu === true ? (
-        <StartMenu startApplication={startApplication} />
+        <StartMenu
+          setDisplayStartMenu={setDisplayStartMenu}
+          startApplication={startApplication}
+        />
       ) : (
         <></>
       )}

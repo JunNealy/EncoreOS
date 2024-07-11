@@ -1,8 +1,7 @@
 import { applicationIndex } from '../../configs/applicationIdnex.js';
 import Button from '../Button/Button.jsx';
-
+import { useEffect, useRef } from 'react';
 import './StartMenu.scss';
-
 const apps = applicationIndex.applications;
 
 const shutDown = () => {
@@ -11,9 +10,29 @@ const shutDown = () => {
 
 console.log(apps);
 
-const StartMenu = ({ startApplication }) => {
+const StartMenu = ({ startApplication, setDisplayStartMenu }) => {
+  const startMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      //trying to close via short circuting
+      if (
+        startMenuRef.current &&
+        !startMenuRef.current.contains(event.target)
+      ) {
+        setDisplayStartMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [setDisplayStartMenu]);
+
   return (
-    <div className="start-menu">
+    <div ref={startMenuRef} className="start-menu">
       {apps.map((application, index) => (
         <Button
           key={index}
