@@ -25,10 +25,10 @@ const Wyrm = () => {
           if (wyrmDirection.y === 0) setWyrmDirection({ x: 0, y: 1 });
           break;
         case 'ArrowLeft':
-          if (wyrmDirection.y === 0) setWyrmDirection({ x: -1, y: 0 });
+          if (wyrmDirection.x === 0) setWyrmDirection({ x: -1, y: 0 });
           break;
         case 'ArrowRight':
-          if (wyrmDirection.y === 0) setWyrmDirection({ x: 1, y: -1 });
+          if (wyrmDirection.x === 0) setWyrmDirection({ x: 1, y: -1 });
           break;
         default:
           break;
