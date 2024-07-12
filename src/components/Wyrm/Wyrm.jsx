@@ -71,10 +71,9 @@ const Wyrm = () => {
     };
   }, [wyrmDirection]);
 
-  //GAME RUN LOOP LOGIC
+  //MOVE THE WYRM LOGIC
   useEffect(() => {
     if (gameOver) return;
-
     const moveWyrm = () => {
       setWyrm((prevWyrm) => {
         const newWyrm = [...prevWyrm];
@@ -91,6 +90,49 @@ const Wyrm = () => {
 
     return () => clearInterval(moveInterval);
   }, [wyrmDirection, gameOver]);
+
+  //GAME RUN LOOP LOGIC
+  const checkCollision = (wyrmHead) => {
+    if (
+      wyrmHead.x < 0 ||
+      wyrmHead.x >= BOARD_SIZE ||
+      wyrmHead.y < 0 ||
+      wyrmHead.y >= BOARD_SIZE
+    ) {
+      return true;
+    }
+
+    for (let i = 1; i < wyrm.length; i++) {
+      if (wyrm[i].x === wyrmHead.x && wyrm[i].y === wyrmHead.y) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  const moveWyrm = () => {
+    setWyrm((prevWyrm) => {
+      const newWyrm = [...prevWyrm];
+      const wyrmHead = { ...newWyrm[0] };
+      wyrmHead.x += wyrmDirection.x;
+      wyrmHead.y += wyrmDirection.y;
+
+      if (checkCollision(wyrmHead)) {
+        setGameOver(true);
+        return prevWyrm;
+      }
+
+      newWyrm.unshift(wyrmHead);
+
+      if (wyrmHead.x === village.x && wyrmHead.y === village.y) {
+        setVillage({
+          x: Math.floor(Math.random() * BOARD_SIZE),
+          y: Math.floor(Math.random() * BOARD_SIZE),
+        });
+      }
+    });
+  };
 
   return <div className="wyrm-game">{createBoard()}</div>;
 };
