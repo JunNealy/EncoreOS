@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
 import Chat from '../Chat/Chat';
 import WordPad from '../WordPad/WordPad';
+import Wyrm from '../Wyrm/Wyrm';
 
 import './Window.scss';
 
@@ -97,6 +98,7 @@ const Window = ({
         {appName === apps[2].app && (
           <WordPad onMouseDown={handleNonDraggableChild} />
         )}
+        {appName === apps[3].app && <Wyrm />}
       </div>
     </div>
   );

@@ -21,6 +21,12 @@
   }
 }
 
+.button-depressed {
+  @extend .button;
+  @include interface-border-lowered;
+  background-color: $interface-gray-shaded;
+}
+
 .calc-button {
   @extend .button;
 

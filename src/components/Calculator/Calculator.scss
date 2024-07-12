@@ -7,13 +7,15 @@
   @include no-highlight;
 
   background-color: $interface-gray;
+  overflow-y: auto;
   height: 100%;
   width: 100%;
 
   &_display {
     @include flex(row, flex-end, center);
     @include interface-border-lowered;
-    height: 2rem;
+    min-height: 2rem;
+    height: 10%;
     width: 100%;
     background-color: white;
     padding: 4px;
