@@ -1,5 +1,5 @@
 //IMPORTS
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Wyrm.scss';
 
 // GAME INITIALIZATION VARIABLES
@@ -13,6 +13,28 @@ const Wyrm = () => {
   const [wyrmDirection, setWyrmDirection] = useState({});
   const [village, setVillage] = useState(FIRST_VILLAGE);
   const [gameOver, setGameOver] = useState(false);
+
+  //Controls
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      switch (event.key) {
+        case 'ArrowUp':
+          if (wyrmDirection.y === 0) setWyrmDirection({ x: 0, y: -1 });
+          break;
+        case 'ArrowDown':
+          if (wyrmDirection.y === 0) setWyrmDirection({ x: 0, y: 1 });
+          break;
+        case 'ArrowLeft':
+          if (wyrmDirection.y === 0) setWyrmDirection({ x: -1, y: 0 });
+          break;
+        case 'ArrowRight':
+          if (wyrmDirection.y === 0) setWyrmDirection({ x: 1, y: -1 });
+          break;
+        default:
+          break;
+      }
+    };
+  }, []);
 
   // BOARD LOGIC GOES HERE
   const createBoard = () => {
