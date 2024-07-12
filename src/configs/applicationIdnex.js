@@ -23,7 +23,7 @@ const applicationIndex = {
     {
       name: 'Wyrm',
       app: Wyrm,
-      icon: './src/assets/icons/EncoreOS-WordPad.png',
+      icon: './src/assets/images/head.png',
     },
   ],
 };
