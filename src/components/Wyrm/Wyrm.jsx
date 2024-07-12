@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 import './Wyrm.scss';
 import GameOver from './GameOver/GameOver';
 import TitleScreen from './TitleScreen/TitleScreen';
+import gameStart from '../../assets/sound/FearTheWrym.mp3';
 
+const fear = new Audio(gameStart);
 // GAME INITIALIZATION VARIABLES
 const BOARD_SIZE = 15;
 // Randomize these later on maybe?
@@ -22,14 +24,22 @@ const Wyrm = () => {
   //START GAME LOGIC
   const startGame = () => {
     setGameStarted(true);
+    setWyrm(STARTING_WYRM);
+    setWyrmDirection({ x: 1, y: 0 });
+    setVillage(FIRST_VILLAGE);
+    setGameOver(false);
+    fear.play();
   };
 
   //RESTART GAME LOGIC
+
   const restartGame = () => {
     setWyrm(STARTING_WYRM);
     setWyrmDirection({ x: 1, y: 0 });
     setVillage(FIRST_VILLAGE);
     setGameOver(false);
+    setGameStarted(true);
+    fear.play();
   };
 
   // BOARD CREATION LOGIC GOES HERE
@@ -41,13 +51,26 @@ const Wyrm = () => {
         const isWyrm = wyrm.some(
           (segment) => segment.x === column && segment.y === row
         );
+
+        let cellClass = '';
+        if (isWyrm) {
+          const segmentIndex = wyrm.findIndex(
+            (segment) => segment.x === column && segment.y === row
+          );
+          if (segmentIndex === 0) {
+            cellClass = 'wyrm-head';
+          } else if (segmentIndex === wyrm.length - 1) {
+            cellClass = 'wyrm-tail';
+          } else {
+            cellClass = 'wyrm-body';
+          }
+        }
+
         const isVillage = village.x === column && village.y === row;
         columns.push(
           <div
             key={`${row}-${column}`}
-            className={`cell ${isWyrm ? 'wyrm' : ''} ${
-              isVillage ? 'village' : ''
-            }`}
+            className={`cell ${cellClass} ${isVillage ? 'village' : ''}`}
           ></div>
         );
       }
@@ -152,7 +175,7 @@ const Wyrm = () => {
       {!gameStarted ? (
         <TitleScreen onStart={startGame} />
       ) : gameOver ? (
-        <GameOver onRestart={restartGame} />
+        <GameOver handleRestart={restartGame} />
       ) : (
         <div className="wyrm-board">{createBoard()}</div>
       )}

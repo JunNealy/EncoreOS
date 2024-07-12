@@ -2,9 +2,11 @@ import './TitleScreen.scss';
 
 const TitleScreen = ({ onStart }) => {
   return (
-    <div>
-      TitleScreen
-      <button onClick={onStart}>START</button>
+    <div className="title-sceen">
+      <p className="title-screen__title">WYRM</p>
+      <button className="title-screen__start" onClick={onStart}>
+        START
+      </button>
     </div>
   );
 };
