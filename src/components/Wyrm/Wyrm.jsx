@@ -14,7 +14,7 @@ const Wyrm = () => {
   const [village, setVillage] = useState(FIRST_VILLAGE);
   const [gameOver, setGameOver] = useState(false);
 
-  //Controls
+  //CONTROLLER LOGIC
   useEffect(() => {
     const handleKeyPress = (event) => {
       switch (event.key) {
@@ -34,7 +34,13 @@ const Wyrm = () => {
           break;
       }
     };
-  }, []);
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [wyrmDirection]);
 
   // BOARD LOGIC GOES HERE
   const createBoard = () => {
