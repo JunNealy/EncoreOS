@@ -1,19 +1,29 @@
 //IMPORTS
 import { useEffect, useState } from 'react';
 import './Wyrm.scss';
+import GameOver from './GameOver/GameOver';
 
 // GAME INITIALIZATION VARIABLES
-const BOARD_SIZE = 20;
-//Randomize these later on maybe?
+const BOARD_SIZE = 15;
+// Randomize these later on maybe?
 const STARTING_WYRM = [{ x: 2, y: 2 }];
 const FIRST_VILLAGE = { x: 5, y: 5 };
-const UPDATE_INTERVAL = 300;
+const UPDATE_INTERVAL = 100;
 
 const Wyrm = () => {
   const [wyrm, setWyrm] = useState(STARTING_WYRM);
-  const [wyrmDirection, setWyrmDirection] = useState({});
+  const [wyrmDirection, setWyrmDirection] = useState({ x: 1, y: 0 });
   const [village, setVillage] = useState(FIRST_VILLAGE);
   const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+
+  //RESTART GAME LOGIC
+  const restartGame = () => {
+    setWyrm(STARTING_WYRM);
+    setWyrmDirection({ x: 1, y: 0 });
+    setVillage(FIRST_VILLAGE);
+    setGameOver(false);
+  };
 
   // BOARD CREATION LOGIC GOES HERE
   const createBoard = () => {
@@ -43,7 +53,7 @@ const Wyrm = () => {
     return board;
   };
 
-  //CONTROLLER LOGIC
+  // CONTROLLER LOGIC
   useEffect(() => {
     const handleKeyPress = (event) => {
       switch (event.key) {
@@ -57,7 +67,7 @@ const Wyrm = () => {
           if (wyrmDirection.x === 0) setWyrmDirection({ x: -1, y: 0 });
           break;
         case 'ArrowRight':
-          if (wyrmDirection.x === 0) setWyrmDirection({ x: 1, y: -1 });
+          if (wyrmDirection.x === 0) setWyrmDirection({ x: 1, y: 0 });
           break;
         default:
           break;
@@ -71,17 +81,36 @@ const Wyrm = () => {
     };
   }, [wyrmDirection]);
 
-  //MOVE THE WYRM LOGIC
+  // MOVE THE WYRM LOGIC
   useEffect(() => {
     if (gameOver) return;
+
     const moveWyrm = () => {
       setWyrm((prevWyrm) => {
         const newWyrm = [...prevWyrm];
         const wyrmHead = { ...newWyrm[0] };
         wyrmHead.x += wyrmDirection.x;
         wyrmHead.y += wyrmDirection.y;
+
+        if (checkCollision(wyrmHead)) {
+          setGameOver(true);
+          return prevWyrm;
+        }
+
         newWyrm.unshift(wyrmHead);
-        newWyrm.pop();
+
+        if (wyrmHead.x === village.x && wyrmHead.y === village.y) {
+          setVillage({
+            x: Math.floor(Math.random() * BOARD_SIZE),
+            y: Math.floor(Math.random() * BOARD_SIZE),
+          });
+          setScore((prevScore) => {
+            return (prevScore += 5);
+          });
+        } else {
+          newWyrm.pop();
+        }
+
         return newWyrm;
       });
     };
@@ -91,7 +120,7 @@ const Wyrm = () => {
     return () => clearInterval(moveInterval);
   }, [wyrmDirection, gameOver]);
 
-  //GAME RUN LOOP LOGIC
+  // GAME RUN LOOP LOGIC
   const checkCollision = (wyrmHead) => {
     if (
       wyrmHead.x < 0 ||
@@ -111,30 +140,18 @@ const Wyrm = () => {
     return false;
   };
 
-  const moveWyrm = () => {
-    setWyrm((prevWyrm) => {
-      const newWyrm = [...prevWyrm];
-      const wyrmHead = { ...newWyrm[0] };
-      wyrmHead.x += wyrmDirection.x;
-      wyrmHead.y += wyrmDirection.y;
-
-      if (checkCollision(wyrmHead)) {
-        setGameOver(true);
-        return prevWyrm;
-      }
-
-      newWyrm.unshift(wyrmHead);
-
-      if (wyrmHead.x === village.x && wyrmHead.y === village.y) {
-        setVillage({
-          x: Math.floor(Math.random() * BOARD_SIZE),
-          y: Math.floor(Math.random() * BOARD_SIZE),
-        });
-      }
-    });
-  };
-
-  return <div className="wyrm-game">{createBoard()}</div>;
+  return (
+    <div className="wyrm-game">
+      {gameOver ? (
+        <GameOver score={score} handleRestart={restartGame} />
+      ) : (
+        <>
+          <div className="wyrm-board">{createBoard()}</div>
+          <p>{`score = ${score}`}</p>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Wyrm;
