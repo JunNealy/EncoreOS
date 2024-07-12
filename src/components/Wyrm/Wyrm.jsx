@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './Wyrm.scss';
 import GameOver from './GameOver/GameOver';
+import TitleScreen from './TitleScreen/TitleScreen';
 
 // GAME INITIALIZATION VARIABLES
 const BOARD_SIZE = 15;
@@ -15,7 +16,13 @@ const Wyrm = () => {
   const [wyrmDirection, setWyrmDirection] = useState({ x: 1, y: 0 });
   const [village, setVillage] = useState(FIRST_VILLAGE);
   const [gameOver, setGameOver] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
   const [score, setScore] = useState(0);
+
+  //START GAME LOGIC
+  const startGame = () => {
+    setGameStarted(true);
+  };
 
   //RESTART GAME LOGIC
   const restartGame = () => {
@@ -142,13 +149,12 @@ const Wyrm = () => {
 
   return (
     <div className="wyrm-game">
-      {gameOver ? (
-        <GameOver score={score} handleRestart={restartGame} />
+      {!gameStarted ? (
+        <TitleScreen onStart={startGame} />
+      ) : gameOver ? (
+        <GameOver onRestart={restartGame} />
       ) : (
-        <>
-          <div className="wyrm-board">{createBoard()}</div>
-          <p>{`score = ${score}`}</p>
-        </>
+        <div className="wyrm-board">{createBoard()}</div>
       )}
     </div>
   );
