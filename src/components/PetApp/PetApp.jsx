@@ -10,17 +10,20 @@ const PetApp = () => {
   const degradeNeeds = () => {
     let diff = Math.floor(Math.random() * 4 + 1);
     console.log(diff);
-    setHunger((prevHunger) => prevHunger - diff);
-    setHappiness((prevHappiness) => prevHappiness - diff);
-    setHygeine((prevHygeiene) => prevHygeiene - diff);
+    setHunger((prevHunger) => Math.max(prevHunger - diff, 0));
+    setHappiness((prevHappiness) => Math.max(prevHappiness - diff, 0));
+    setHygeine((prevHygeiene) => Math.max(prevHygeiene - diff, 0));
   };
 
-  const needLoop = () => {
-    const interval = Math.floor(Math.random() * 10 + 1) * 1000;
-    setTimeout(degradeNeeds, interval);
-  };
+  useEffect(() => {
+    const needLoop = () => {
+      const interval = Math.floor(Math.random() * 10 + 1) * 1000;
+      setTimeout(degradeNeeds, interval);
+    };
 
-  needLoop();
+    needLoop();
+  }, []);
+
   console.log(hunger);
   console.log(happiness);
   console.log(hygeine);
