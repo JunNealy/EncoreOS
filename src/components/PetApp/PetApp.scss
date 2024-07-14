@@ -1,0 +1,52 @@
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+
+.pet-app {
+  height: 100%;
+  width: 100%;
+  @include flex(column, center, center);
+  &__needs {
+    height: 10%;
+    @include flex(row, center, center);
+    &-hunger {
+      border-radius: 10px;
+      height: 1rem;
+      width: 10rem;
+      border: 2px solid red;
+      &-meter {
+        height: 100%;
+        width: 100%;
+        background-color: red;
+      }
+    }
+    &-happiness {
+      border-radius: 10px;
+      height: 1rem;
+      width: 10rem;
+      border: 2px solid green;
+      &-meter {
+        height: 100%;
+        width: 100%;
+        background-color: green;
+      }
+    }
+    &-hygeine {
+      border-radius: 10px;
+      height: 1rem;
+      width: 10rem;
+      border: 2px solid yellow;
+      &-meter {
+        height: 100%;
+        width: 100%;
+        background-color: yellow;
+      }
+    }
+  }
+
+  &__pet-display {
+    height: 80%;
+    width: 100%;
+    background-color: white;
+  }
+}
