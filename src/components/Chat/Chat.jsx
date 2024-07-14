@@ -8,9 +8,12 @@ import RegisterChat from '../RegisterChat/RegisterChat';
 import './Chat.scss';
 import chime from '../../assets/sound/dindong.mp3';
 
+const VITE_CHAT_PORT = import.meta.env.VITE_CHAT_PORT;
+console.log('THE CHAT PROT IS', VITE_CHAT_PORT);
+
 function Chat() {
   const [messages, setMessages] = useState([]);
-  const [currentMessage, setCurrentMessage] = useState('');
+  const [currentMessage, setCurrentMessage] = useState(null);
   const [username, setUsername] = useState('');
   const [socket, setSocket] = useState('');
 
@@ -19,7 +22,7 @@ function Chat() {
   //Firing twice due to react dev mode.
   useEffect(() => {
     if (username.trim() !== '') {
-      const openSocket = io('http://localhost:8080'); // Replace with your server URL -  env/prod to be clear
+      const openSocket = io(VITE_CHAT_PORT);
       setSocket(openSocket);
 
       openSocket.on('message', (message) => {
@@ -41,10 +44,9 @@ function Chat() {
 
   const sendMessage = () => {
     if (currentMessage) {
-      console.log(currentMessage);
       //send the submitted message to the server
       socket.emit('chatMessage', currentMessage, username);
-      setMessages((prevMessages) => [...prevMessages, currentMessage]);
+
       // Clear the input field after sending
       setCurrentMessage('');
     }

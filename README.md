@@ -19,7 +19,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/junypyrnealy/]
+[LinkedIn][linkedin-shield][https://www.linkedin.com/in/junypyrnealy/]
 
 
 
@@ -38,7 +38,7 @@
     <a href="https://github.com/JunNealy/EncoreOS"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/JunNealy/EncoreOS">View Demo</a>·
+    <a href="https://github.com/JunNealy/EncoreOS-ChatServer">The EncoreOS Chat-Sever is needed for full chat functionality</a>
   </p>
 </div>
 
