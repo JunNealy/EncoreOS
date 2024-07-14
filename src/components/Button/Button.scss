@@ -58,6 +58,7 @@
 .chat-button {
   @extend .button;
   min-width: fit-content;
+  height: 100%;
 }
 
 .disabled {

@@ -56,7 +56,11 @@ function Chat() {
     setCurrentMessage(event.target.value);
   };
 
-  //connect to server, I believe the "join chat is arbitrary as long as both sides have functions that recognizes the same string it should work - CHECK DOCS"
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && currentMessage.trim() != '') {
+      sendMessage();
+    }
+  };
 
   return (
     <div className="chat-app">
@@ -78,6 +82,7 @@ function Chat() {
           placeholder="Type a message..."
           value={currentMessage}
           onChange={handlChange}
+          onKeyDown={handleKeyDown}
         />
 
         <Button onClick={sendMessage} style={'chat-button'} label={'Send'} />
