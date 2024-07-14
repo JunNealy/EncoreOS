@@ -26,6 +26,8 @@ const Window = ({
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
+  const [isFullScreen, setFullScreen] = useState(false);
+  const [isMinimized, setMinimized] = useState(false);
 
   const handleMouseDown = (e) => {
     onClick();
@@ -46,7 +48,6 @@ const Window = ({
     let newX = event.clientX - initialPosition.x;
     let newY = event.clientY - initialPosition.y;
 
-    // Constrain within bounds
     if (newX < 0) {
       newX = 0;
     } else if (newX > maxX) {
@@ -69,9 +70,14 @@ const Window = ({
     event.stopPropagation();
   };
 
+  const handleFullscreenToggle = () => {
+    setFullScreen(!isFullScreen);
+  };
+
   return (
     <div
-      className="window"
+      className={`window ${isFullScreen ? 'fullscreen' : ''} 
+      }`}
       style={{
         left: position.x,
         top: position.y,
@@ -84,6 +90,13 @@ const Window = ({
     >
       <div className="window__title-bar">
         <p className="window__title-bar-label"></p>
+        <Button
+          label={'▢'}
+          style={'button'}
+          onClick={() => {
+            handleFullscreenToggle();
+          }}
+        />
         <Button
           label={'X'}
           style={'button'}
