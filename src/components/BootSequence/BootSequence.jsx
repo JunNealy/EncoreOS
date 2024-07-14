@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import bootSound from '../../assets/sound/BootSound.mp3';
 import './BootSequence.scss';
+import startChime from '../../assets/sound/StartChime.mp3';
 
 const boot = new Audio(bootSound);
+const start = new Audio(startChime);
 
 const BootSequence = ({ handleBootComplete }) => {
   const [sequenceStarted, setSequenceStarted] = useState(false);
@@ -32,13 +34,14 @@ const BootSequence = ({ handleBootComplete }) => {
           setLines((prevLines) => [...prevLines, bootText[lineIndex]]);
           lineIndex++;
         } else {
+          start.play();
           clearInterval(interval);
           setShowLoadingScreen(true);
           setTimeout(() => {
             handleBootComplete();
-          }, 2000);
+          }, 2500);
         }
-      }, 950);
+      }, 920);
 
       return () => clearInterval(interval);
     }
@@ -48,23 +51,27 @@ const BootSequence = ({ handleBootComplete }) => {
     setSequenceStarted(true);
   };
 
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      handleStartBoot(event);
+    }
+  });
+
   return (
     <div className="boot-screen">
       {!sequenceStarted && (
-        <button onClick={handleStartBoot}>Start Boot Sequence</button>
+        <p className="boot-screen__start-text">
+          System in standby please press ENTER Key to boot
+        </p>
       )}
       {sequenceStarted && !showLoadingScreen && (
-        <div>
+        <div className="boot-screen__text">
           {lines.map((line, index) => (
             <div key={index}>{line}</div>
           ))}
         </div>
       )}
-      {showLoadingScreen && (
-        <div className="loading-screen">
-          <p>Loading Operating System...</p>
-        </div>
-      )}
+      {showLoadingScreen && <div className="loading-screen"></div>}
     </div>
   );
 };
