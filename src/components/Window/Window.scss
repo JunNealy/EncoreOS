@@ -35,3 +35,12 @@
     margin: 0.5rem 0;
   }
 }
+
+.fullscreen {
+  width: 100%;
+  height: calc(100% - 2.8512rem);
+}
+
+.minimized {
+  z-index: -1;
+}
