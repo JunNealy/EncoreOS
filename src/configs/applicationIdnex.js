@@ -29,7 +29,7 @@ const applicationIndex = {
     {
       name: 'Virtual Pet',
       app: PetApp,
-      icon: './src/assets/images/head.png',
+      icon: './src/assets/images/Grungus.png',
     },
   ],
 };

@@ -1,13 +1,16 @@
 @use '../../styles/partials/mixins.scss' as *;
 @use '../../styles/partials/global.scss' as *;
 @use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
 
 .pet-app {
+  font-family: 'Paytone One';
   height: 100%;
   width: 100%;
   background-color: white;
   @include flex(column, flex-start, center);
   &__needs {
+    background-color: #27363b;
     width: 100%;
 
     height: 10%;
@@ -17,11 +20,11 @@
       border-radius: 500px;
       height: 100%;
       width: 10rem;
-      border: 2px solid red;
+      border: 2px solid #ff625e;
       &-meter {
         height: 100%;
         width: 100%;
-        background-color: red;
+        background-color: #ff9288;
       }
     }
     &-happiness {
@@ -29,11 +32,11 @@
 
       height: 100%;
       width: 10rem;
-      border: 2px solid green;
+      border: 2px solid #82c8e2;
       &-meter {
         height: 100%;
         width: 100%;
-        background-color: green;
+        background-color: #a4d7ec;
       }
     }
     &-hygiene {
@@ -41,16 +44,17 @@
 
       height: 100%;
       width: 10rem;
-      border: 2px solid yellow;
+      border: 2px solid #f5eea5;
       &-meter {
         height: 100%;
         width: 100%;
-        background-color: yellow;
+        background-color: #fffec3;
       }
     }
   }
   &__actions {
     @include flex(row, center, center);
+    background-color: #27363b;
     gap: 2rem;
     width: 100%;
     height: 20%;
@@ -58,14 +62,32 @@
     padding: 1rem;
 
     &-feed {
-      background-color: red;
+      background-color: #ff9288;
+      border: 2px solid #ff9288;
+
+      &:hover {
+        background-color: #ff625e;
+        border: 2px solid #ff625e;
+      }
     }
 
     &-play {
-      background-color: green;
+      background-color: #a4d7ec;
+      border: 2px solid #a4d7ec;
+
+      &:hover {
+        background-color: #82c8e2;
+        border: 2px solid #82c8e2;
+      }
     }
     &-bath {
-      background-color: yellow;
+      background-color: #fffec3;
+      border: 2px solid #fffec3;
+
+      &:hover {
+        background-color: #f5eea5;
+        border: 2px solid #f5eea5;
+      }
     }
   }
   &__pet-display {
@@ -84,7 +106,13 @@
 }
 
 .action-button {
+  font-family: 'Paytone One';
   height: 100%;
   border-radius: 50% 20% / 10% 40%;
   width: 20%;
+  transition: 1s;
+
+  &:hover {
+    border-radius: 10% 40% / 50% 20%;
+  }
 }
