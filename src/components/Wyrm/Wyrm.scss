@@ -1,0 +1,45 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+
+.wyrm-game {
+  @include flex(column, center, center);
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  @include flex(row, flex-start, center);
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+}
+
+.wyrm {
+  background-position: center;
+  background-size: contain;
+}
+
+.village {
+  background-color: red;
+}
+
+.wyrm-head {
+  background-image: url('./src/assets/images/head.png');
+  background-size: cover;
+}
+
+.wyrm-body {
+  background-image: url('./src/assets/images/middle.png');
+  background-size: cover;
+}
+
+.wyrm-tail {
+  background-image: url('./src/assets/images/tail.png');
+  background-size: cover;
+}
