@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { applicationIndex } from '../../configs/applicationIdnex';
+import BootSequence from '../BootSequence/BootSequence';
 import StartMenu from '../StartMenu/StartMenu';
 // import Chat from '../Chat/Chat';
 import Toolbar from '../Toolbar/Toolbar';
@@ -9,6 +10,7 @@ import Window from '../Window/Window';
 import './Screen.scss';
 
 const Screen = () => {
+  const [bootComplete, setBootComplete] = useState(false);
   const [openApplications, setOpenApplications] = useState([]);
   const [maxXY, setMaxXY] = useState({ maxX: 0, maxY: 0 });
   const [displayStartMenu, setDisplayStartMenu] = useState(false);
@@ -58,8 +60,17 @@ const Screen = () => {
     });
   };
 
+  const handleBootComplete = () => {
+    setBootComplete(true);
+  };
+
   return (
     <div className="screen" ref={screenRef}>
+      {!bootComplete ? (
+        <BootSequence handleBootComplete={handleBootComplete} />
+      ) : (
+        <></>
+      )}
       {openApplications.map((application) => (
         <Window
           key={application.id}

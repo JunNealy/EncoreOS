@@ -11,7 +11,7 @@ const BOARD_SIZE = 15;
 // Randomize these later on maybe?
 const STARTING_WYRM = [{ x: 2, y: 2 }];
 const FIRST_VILLAGE = { x: 5, y: 5 };
-const UPDATE_INTERVAL = 100;
+const UPDATE_INTERVAL = 200;
 
 const Wyrm = () => {
   const [wyrm, setWyrm] = useState(STARTING_WYRM);
@@ -27,6 +27,7 @@ const Wyrm = () => {
     setWyrm(STARTING_WYRM);
     setWyrmDirection({ x: 1, y: 0 });
     setVillage(FIRST_VILLAGE);
+    setScore(0);
     setGameOver(false);
     fear.play();
   };
@@ -39,6 +40,7 @@ const Wyrm = () => {
     setVillage(FIRST_VILLAGE);
     setGameOver(false);
     setGameStarted(true);
+    setScore(o);
     fear.play();
   };
 
@@ -175,9 +177,12 @@ const Wyrm = () => {
       {!gameStarted ? (
         <TitleScreen onStart={startGame} />
       ) : gameOver ? (
-        <GameOver handleRestart={restartGame} />
+        <GameOver handleRestart={restartGame} score={score} />
       ) : (
-        <div className="wyrm-board">{createBoard()}</div>
+        <div className="wyrm-board">
+          {createBoard()}
+          <p>Score: {score}</p>
+        </div>
       )}
     </div>
   );
