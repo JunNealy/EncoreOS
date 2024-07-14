@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import grungusIdle from '../../assets/images/Grungusidle.gif';
+import grungusIdle from '../../assets/images/GrungusIdle.gif';
 import grungusHungry from '../../assets/images/Grungushungrygif.gif';
 import grungusStinky from '../../assets/images/Grungustinky.gif';
+import grungusSleepy from '../../assets/images/Grungussleepy.gif';
 
 import './PetApp.scss';
 
@@ -11,43 +12,55 @@ const PetApp = () => {
   const [happiness, setHappiness] = useState(100);
   const [hygiene, setHygiene] = useState(100);
 
-  const degradeNeeds = () => {
+  const degradeHunger = () => {
     setHunger((prevHunger) =>
       Math.max(prevHunger - Math.floor(Math.random() * 10 + 1), 0)
     );
+  };
+
+  const degradeHappiness = () => {
     setHappiness((prevHappiness) =>
       Math.max(prevHappiness - Math.floor(Math.random() * 4 + 1), 0)
     );
+  };
+
+  const degradeHygiene = () => {
     setHygiene((prevHygiene) =>
       Math.max(prevHygiene - Math.floor(Math.random() * 4 + 1), 0)
     );
-    console.log(hunger);
-    console.log(happiness);
-    console.log(hygiene);
   };
 
   useEffect(() => {
-    const needLoop = () => {
-      const interval = Math.floor(Math.random() * 100 + 1) * 1000;
-      setTimeout(degradeNeeds, interval);
-    };
+    const hungerInterval = setInterval(
+      degradeHunger,
+      Math.floor(Math.random() * 10 + 1) * 1000
+    );
+    const happinessInterval = setInterval(
+      degradeHappiness,
+      Math.floor(Math.random() * 10 + 1) * 1000
+    );
+    const hygieneInterval = setInterval(
+      degradeHygiene,
+      Math.floor(Math.random() * 10 + 1) * 1000
+    );
 
-    needLoop();
+    return () => {
+      clearInterval(hungerInterval);
+      clearInterval(happinessInterval);
+      clearInterval(hygieneInterval);
+    };
   }, []);
 
   const handleFeed = () => {
     setHunger((prevHunger) => Math.min(prevHunger + 25, 100));
-    console.log('INCREMENT HUNGER', hunger);
   };
 
   const handlePlay = () => {
     setHappiness((prevHappiness) => Math.min(prevHappiness + 25, 100));
-    console.log('INCREMENT HAPPINESS', happiness);
   };
 
   const handleBath = () => {
     setHygiene((prevHygiene) => Math.min(prevHygiene + 25, 100));
-    console.log('INCREMENT HYGIENE', hygiene);
   };
 
   return (
@@ -80,6 +93,8 @@ const PetApp = () => {
               ? grungusHungry
               : hygiene < 50
               ? grungusStinky
+              : happiness < 50
+              ? grungusSleepy
               : grungusIdle
           }
           alt=""
