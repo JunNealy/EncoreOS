@@ -8,6 +8,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Window from '../Window/Window';
 
 import './Screen.scss';
+import DesktopIcons from '../DesktopIcons/DesktopIcons';
 
 const Screen = () => {
   const [bootComplete, setBootComplete] = useState(false);
@@ -71,6 +72,7 @@ const Screen = () => {
       ) : (
         <></>
       )}
+      <DesktopIcons startApplication={startApplication} />
       {openApplications.map((application) => (
         <Window
           key={application.id}

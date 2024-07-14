@@ -85,3 +85,15 @@
 
 $border-highlight: #fff8ee;
 $border-shaded: #1f2020;
+
+.desk-icon {
+  @include flex(column, center, center);
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+}
+
+.desk-icon .button__icon {
+  width: 100%;
+  height: auto;
+}

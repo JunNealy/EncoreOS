@@ -9,10 +9,11 @@
   padding: 2px;
   height: fit-content;
   background-color: $interface-gray;
-  justify-self: flex-end;
-  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+
   padding: 4px;
-  width: 100%;
 
   &__buttons {
     @include flex(row, flex-start, center);

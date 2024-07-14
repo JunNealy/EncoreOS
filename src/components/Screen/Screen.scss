@@ -1,7 +1,10 @@
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/global.scss' as *;
 @use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
 
 .screen {
-  display: flex;
+  @include flex(column, space-between, space-between);
   position: relative;
   background-color: #008080;
   height: 100vh;

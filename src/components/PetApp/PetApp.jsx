@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import grungusIdle from '../../assets/images/GrungusIdle.gif';
+import grungusIdle from '../../assets/images/Grungusidle.gif';
 import grungusHungry from '../../assets/images/Grungushungrygif.gif';
 import grungusStinky from '../../assets/images/Grungustinky.gif';
 import grungusSleepy from '../../assets/images/Grungussleepy.gif';

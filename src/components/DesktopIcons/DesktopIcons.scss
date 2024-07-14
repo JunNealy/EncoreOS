@@ -1,0 +1,26 @@
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/typography.scss' as *;
+
+.desktop-icons {
+  @include flex(column, flex-start, center);
+
+  color: white;
+  font-size: 1.25rem;
+  width: fit-content;
+  height: 100%;
+  flex-grow: 1;
+
+  &-icon {
+    width: fit-content;
+    @include flex(column, center, flex-start);
+    margin-bottom: 1rem;
+
+    &-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
