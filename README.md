@@ -1,103 +1,223 @@
-# Project Title
-EncoreOS
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a id="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
 
-## Overview
 
-EncoreOS is a website that simulates the experience of using a Windows 95-style operating system. Users will interact with draggable windows containing basic applications such as a calculator, text editor, and classic games.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-## Problem
-
-A specific need or pain point does not drive this app but rather aims to explore various design patterns within a single web application. It seeks to revive the nostalgic playfulness of using a Windows 95-style interface in a modern context, inspired by Brenda Laurel's concept of "computers as theatre." The project serves as a creative exploration of interface design and user interaction, contrasting with the streamlined aesthetic prevalent in modern websites.
-
-## User Profile
-
-The app is intended for anyone interested in experiencing a nostalgic, multimedia web interface reminiscent of Windows 95. It will primarily target desktop users.
-
-## Features
-1. Multi Window Interface
-    - Users can open multiple windows containing different applications at once. The active window will be "on top" at the highest Z axis with the rest stacking in subsequent order.
-2. Drag and Drop Functionality
-    - Users will be able to drag and drop windows within the limits of the "Screen" Interface
-3. File Persistence
-    - To better emulate a desktop experience files and data will be persisted across sessions for the user. This includes things such as word documents, high-scores storage for games, and chat messages.
-4. Applications
-    1. Calculator app: A simple calculator capable of performing basic arithmetic calculations for the user
-    2. Word Pad: A simple word pad that will allow the user to type and save their word documents
-    3. Pet App: A basic tamagotchi-style pet app that allows the user to manage the needs (hunger, happiness, hygiene) of a virtual pet.
-    4. Chat: A websocket-based chat application that will allow users connected to the website at the same time to instant message one another
-    5. Snake: The classic game of snake
-    
-
-## Implementation
-
-### Tech Stack
-- **Framework:** Vanilla JavaScript with React for UI components.
-- **Build Tool:** Vite for fast development and modern JavaScript features.
-- **Styling:** SCSS (Sass) for styling components.
-- **WebSocket:** Used for real-time communication in the chat app.
-- **Local Storage:** For persisting user data across sessions
-
-### APIs
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/junypyrnealy/]
 
 
-### Sitemap
 
-- **Main Window** 
-	- **Start Bar**: Contains system icons and a start button.
-	- **Desktop Icons**: Icons representing applications or files.
-	- **Resizable and draggable windows**: Each window contains different apps or functionalities.
-- **Start Menu**
-	- **Navigation**: Allows users to navigate through folders and launch applications.
-- Window Component
-    - Houses the apps as listed above in features
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/EncoreOS-Logo.png" alt="EncoreOS Logo" width="80" height="80">
+  </a>
 
-### Mockups
+<h3 align="center">EncoreOS</h3>
 
-
-![Main UI](EncoreOS-UI-Mockup.png)
-![App Flow](EncoreOS-AppFLow.png)
-![Data Structure Example](EncoreOS-DataStructure-Example.png)
-![Snake](EncoreOS-Snake.png)
-![Word Pad](EncoreOS-WordPad.png)
-![Virtual Pet](EncoreOS-VirtualPet.png)
-![Calculator](EncoreOS-Calculator.png)
-
-### Roadmap
-
-- **Feature 1**: Implement basic functionality of desktop interaction and start menu**
-	- Develop the main UI with the following components
-    	- **Screen**
-    	- **Start Bar**
-    	- and **Desktop Icons**.
-	- Implement basic **Start Menu** functionality with navigation.
-    	- Create a structure for selectable items and recursive menus for items nested in folders
-- **Feature 2: Create draggable and resizable window components**
-	- Design and implement draggable and resizable window components.
-	- Ensure windows can contain different apps or functionalities.
-	- Ensure windows movement are bounded by **Screen Component**
-	- Create a stack using state that can be queried to determine window stacking order and get updated on clicking a different window
-- **Feature 3: Multi-window Interface**: Further refine the ability to open and manage multiple windows.
-- **Feature 4: Persistent Word Documents**
-   	 - Ability to write and edit word documents within the application window
-   	 - Ability to save documents to local storage JSON,
-   	 - Ability to open and further edit Documents
-- **Feature 5: WebSocket Chat App:** Start implementing the chat app using WebSocket for real-time messaging.
-    - Enable chat connection between users on the website at the same time
-- **Feature 6: Calculator App**
-    - Perform basic arithmetic operations
-- **Feature 7: Snake:**
-    - Implement a playable snake game
-- **Feature 8: Pet Application**
-- **Feature 9: Startup sequence**
-- Testing and bug fixing
-- DEMO
+  <p align="center">
+    An emulation of the Windows 95 like desktop experience!
+    <br />
+    <a href="https://github.com/JunNealy/EncoreOS"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/JunNealy/EncoreOS">View Demo</a>·
+  </p>
+</div>
 
 
-## Nice-to-haves
-Internet Browser
-Minesweeper: A clone of the classic windows packed in-game
-Paint: A Basic Drawing Program
-Mobile Display: Maybe a styling for palm pilot like appearance?
-DB Integration if necessary
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+
+* [![React][React.js]][React-url]
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+2. Clone the repo
+   ```sh
+   git https://github.com/JunNealy/EncoreOS.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Usage
+
+EncoreOS can be used to experience a nostalgic trip back to the Windows 95 era. Users can chat, create documents, and perform calculations just like they would on an old desktop system.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+## Roadmap
+
+- [X] Add Chat App
+- [X] Add Calculator App
+- [X] Add Snake Game
+- [X] Add Virtual Pet
+- [X] Add Rich Text Editing App
+  - [ ] Improve Rich Text Editor Functionality for more Authentic Feel
+- [ ] Add Embeded Web Browser
+
+
+See the [open issues](https://github.com/JunNealy/EncoreOS/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Junypyr Nealy - junypyr@gmail.com
+
+Project Link: [https://github.com/JunNealy/EncoreOS](https://github.com/JunNealy/EncoreOS)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [Sysfont by Alina Sava](https://fontsarena.com/sysfont-by-alina-sava/)
+* [Bootup Sound by Dodgykebaab Stock Room ](https://www.youtube.com/watch?v=fEchUhAOfe4)
+* []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/repo_name/network/members
+[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-url]: https://github.com/github_username/repo_name/stargazers
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/github_username/repo_name/issues
+[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
