@@ -4,6 +4,7 @@ import { applicationIndex } from '../../configs/applicationIdnex';
 import Button from '../Button/Button';
 import Calculator from '../Calculator/Calculator';
 import Chat from '../Chat/Chat';
+import PetApp from '../PetApp/PetApp';
 import WordPad from '../WordPad/WordPad';
 import Wyrm from '../Wyrm/Wyrm';
 
@@ -99,6 +100,7 @@ const Window = ({
           <WordPad onMouseDown={handleNonDraggableChild} />
         )}
         {appName === apps[3].app && <Wyrm />}
+        {appName === apps[4].app && <PetApp />}
       </div>
     </div>
   );
