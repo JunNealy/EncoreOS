@@ -5,13 +5,17 @@
 .pet-app {
   height: 100%;
   width: 100%;
-  @include flex(column, center, center);
+  background-color: white;
+  @include flex(column, flex-start, center);
   &__needs {
+    width: 100%;
+    border: 2px solid coral;
     height: 10%;
-    @include flex(row, center, center);
+    @include flex(row, space-evenly, center);
+    padding: 0.5rem;
     &-hunger {
-      border-radius: 10px;
-      height: 1rem;
+      border-radius: 500px;
+      height: 100%;
       width: 10rem;
       border: 2px solid red;
       &-meter {
@@ -21,8 +25,9 @@
       }
     }
     &-happiness {
-      border-radius: 10px;
-      height: 1rem;
+      border-radius: 500px;
+
+      height: 100%;
       width: 10rem;
       border: 2px solid green;
       &-meter {
@@ -32,8 +37,9 @@
       }
     }
     &-hygeine {
-      border-radius: 10px;
-      height: 1rem;
+      border-radius: 500px;
+
+      height: 100%;
       width: 10rem;
       border: 2px solid yellow;
       &-meter {
@@ -43,10 +49,39 @@
       }
     }
   }
+  &__actions {
+    @include flex(row, center, center);
+    gap: 2rem;
+    width: 100%;
+    height: 20%;
+    border: 2px solid coral;
+    padding: 1rem;
 
+    &-feed {
+      background-color: red;
+    }
+
+    &-play {
+      background-color: green;
+    }
+    &-bath {
+      background-color: yellow;
+    }
+  }
   &__pet-display {
+    @include flex(row, center, center);
+    border: 2px solid coral;
     height: 80%;
     width: 100%;
-    background-color: white;
+
+    &-grungus {
+      height: 20rem;
+    }
   }
+}
+
+.action-button {
+  height: 100%;
+  border-radius: 50% 20% / 10% 40%;
+  width: 20%;
 }

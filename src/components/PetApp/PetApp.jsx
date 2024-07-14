@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+import grungusIdle from '../../assets/images/Grungusidle.gif';
+import grungusHungry from '../../assets/images/Grungushungrygif.gif';
+import grungusStinky from '../../assets/images/Grungustinky.gif';
+
 import './PetApp.scss';
 
 const PetApp = () => {
@@ -57,15 +61,36 @@ const PetApp = () => {
           <div className="pet-app__needs-hygeine-meter"></div>
         </div>
       </div>
-      <div className="pet-app__pet-display"></div>
+      <div className="pet-app__pet-display">
+        <img
+          className="pet-app__pet-display-grungus"
+          src={
+            hunger < 50
+              ? grungusHungry
+              : grungusIdle || hygeine < 50
+              ? grungusStinky
+              : grungusIdle
+          }
+          alt=""
+        />
+      </div>
       <div className="pet-app__actions">
-        <button className="pet-app__actions-feed" onClick={handleFeed}>
+        <button
+          className="pet-app__actions-feed action-button"
+          onClick={handleFeed}
+        >
           Feed
         </button>
-        <button className="pet-app__actions-play" onClick={handlePlay}>
+        <button
+          className="pet-app__actions-play action-button"
+          onClick={handlePlay}
+        >
           Play
         </button>
-        <button className="pet-app__actions-bath" onClick={handleBath}>
+        <button
+          className="pet-app__actions-bath action-button"
+          onClick={handleBath}
+        >
           Bath
         </button>
       </div>
