@@ -38,6 +38,7 @@ const Screen = () => {
     const newApplication = {
       id: openApplications.length + 1,
       name: appName,
+      isVisible: true,
     };
     setOpenApplications([...openApplications, newApplication]);
     setDisplayStartMenu(false);
