@@ -12,16 +12,7 @@ import './Window.scss';
 
 const apps = applicationIndex.applications;
 
-const Window = ({
-  maxX,
-  maxY,
-
-  zindex,
-  onClick,
-  appName,
-  closeWindow,
-  id,
-}) => {
+const Window = ({ maxX, maxY, zindex, onClick, appName, closeWindow, id }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });

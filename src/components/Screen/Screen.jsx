@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-
-import { applicationIndex } from '../../configs/applicationIdnex';
 import BootSequence from '../BootSequence/BootSequence';
 import StartMenu from '../StartMenu/StartMenu';
-// import Chat from '../Chat/Chat';
 import Toolbar from '../Toolbar/Toolbar';
 import Window from '../Window/Window';
-
 import './Screen.scss';
 import DesktopIcons from '../DesktopIcons/DesktopIcons';
 
@@ -17,7 +13,6 @@ const Screen = () => {
   const [displayStartMenu, setDisplayStartMenu] = useState(false);
   const screenRef = useRef(null);
   const [focusedApp, setFocusedApp] = useState('');
-  const [wordData, setWordData] = useState([]);
 
   useEffect(() => {
     if (screenRef.current) {
@@ -28,7 +23,6 @@ const Screen = () => {
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
-    setWordData(savedData);
     console.log(savedData);
   }, []);
 
