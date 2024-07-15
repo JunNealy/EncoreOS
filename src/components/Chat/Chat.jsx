@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
+import chime from '../../assets/sound/dindong.mp3';
 import Button from '../Button/Button';
 import ChatMessage from '../ChatMessage/ChatMessage';
 import RegisterChat from '../RegisterChat/RegisterChat';
 
 import './Chat.scss';
-import chime from '../../assets/sound/dindong.mp3';
 
 const VITE_CHAT_PORT = import.meta.env.VITE_CHAT_PORT;
-console.log('THE CHAT PROT IS', VITE_CHAT_PORT);
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -19,7 +18,6 @@ function Chat() {
 
   const notifcation = new Audio(chime);
 
-  //Firing twice due to react dev mode.
   useEffect(() => {
     if (username.trim() !== '') {
       const openSocket = io(VITE_CHAT_PORT);
@@ -32,9 +30,7 @@ function Chat() {
 
       openSocket.emit('joinChat', username);
 
-      openSocket.on('disconnect', () => {
-        console.log('socket closed');
-      });
+      openSocket.on('disconnect', () => {});
 
       return () => {
         openSocket.disconnect();
@@ -44,10 +40,8 @@ function Chat() {
 
   const sendMessage = () => {
     if (currentMessage) {
-      //send the submitted message to the server
       socket.emit('chatMessage', currentMessage, username);
 
-      // Clear the input field after sending
       setCurrentMessage('');
     }
   };

@@ -3,14 +3,6 @@
 @use '../../styles/partials/mixins.scss' as *;
 @use '../../styles/partials/typography.scss' as *;
 
-// <div className="message">
-//   <div className="message__details">
-//     <p className="message__details-sender">{`${sender}`}</p>
-//     <p className="message__details-sender">{`${time}`}</p>
-//   </div>
-
-//   <p className="message__text">{`${text}`}</p>
-// </div>
 .message {
   @include flex(column, center, center);
   font-size: 1.25rem;
