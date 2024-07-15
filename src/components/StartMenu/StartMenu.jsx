@@ -30,6 +30,8 @@ const StartMenu = ({ startApplication, setDisplayStartMenu }) => {
 
   return (
     <div ref={startMenuRef} className="start-menu">
+      <Button label={'accesories'} style={'start-button'} />
+
       {apps.map((application, index) => (
         <Button
           key={index}

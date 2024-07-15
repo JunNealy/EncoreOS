@@ -17,6 +17,7 @@ const Screen = () => {
   const [displayStartMenu, setDisplayStartMenu] = useState(false);
   const screenRef = useRef(null);
   const [focusedApp, setFocusedApp] = useState('');
+  const [wordData, setWordData] = useState([]);
 
   useEffect(() => {
     if (screenRef.current) {
@@ -27,6 +28,7 @@ const Screen = () => {
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
+    setWordData(savedData);
     console.log(savedData);
   }, []);
 
@@ -55,8 +57,6 @@ const Screen = () => {
   };
 
   const closeWindow = (id) => {
-    console.log(id);
-    console.log('cliced x');
     setOpenApplications((prevApplications) => {
       return prevApplications.filter((app) => app.id != id);
     });

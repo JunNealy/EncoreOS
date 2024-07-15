@@ -15,19 +15,17 @@ const apps = applicationIndex.applications;
 const Window = ({
   maxX,
   maxY,
-  label,
+
   zindex,
   onClick,
   appName,
   closeWindow,
   id,
-  saveData,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
   const [isFullScreen, setFullScreen] = useState(false);
-  const [isMinimized, setMinimized] = useState(false);
 
   const handleMouseDown = (e) => {
     onClick();
@@ -74,6 +72,14 @@ const Window = ({
     setFullScreen(!isFullScreen);
   };
 
+  const findAppName = (appComponent) => {
+    const { applications } = applicationIndex;
+    const foundApp = applications.find((app) => app.app === appComponent);
+    return foundApp ? foundApp.name : null;
+  };
+
+  const windowTitle = findAppName(appName);
+
   return (
     <div
       className={`window ${isFullScreen ? 'fullscreen' : ''} 
@@ -89,7 +95,7 @@ const Window = ({
       onMouseMove={handleMouseMove}
     >
       <div className="window__title-bar">
-        <p className="window__title-bar-label"></p>
+        <p className="window__title-bar-label">{windowTitle}</p>
         <Button
           label={'▢'}
           style={'button'}

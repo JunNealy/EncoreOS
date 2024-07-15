@@ -4,6 +4,7 @@
 @use '../../styles/partials/typography.scss' as *;
 
 .start-menu {
+  isolation: isolate;
   @include no-highlight;
   @include flex(column, center, center);
   position: absolute;

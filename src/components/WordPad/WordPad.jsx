@@ -57,7 +57,6 @@ const WordPad = ({ onMouseDown }) => {
   };
 
   useEffect(() => {
-    console.log(documentContent.length);
     if (documentContent.length > 5) {
       setStickyIsVisible(true);
     } else {
@@ -126,7 +125,7 @@ const WordPad = ({ onMouseDown }) => {
       {stickyIsVisible && (
         <img
           className="sticky"
-          src="./src/assets/images/Stickly1.png"
+          src="./src/assets/images/Stickly.gif"
           alt="It's sticky!"
         />
       )}
