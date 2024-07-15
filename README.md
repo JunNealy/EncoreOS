@@ -75,7 +75,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![EncoreOS](images/EncoreOS-Product-Image.png "EncoreOS")
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -111,7 +111,12 @@
    npm install
    ```
 
-4. Run the application
+4. Configure Environmental Variables
+   ```sh
+   copy .env.sample > rename copy to .env > set the env variable VITE_CHAT_PORT to http://localhost:<INSERT THE PORT NUMBER YOU CONFIGURED ON CHAT SERVER>
+   ```
+
+5. Run the application
    ```sh
    npm run dev
    ```
