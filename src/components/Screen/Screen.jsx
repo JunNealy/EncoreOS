@@ -23,7 +23,7 @@ const Screen = () => {
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
-    console.log(savedData);
+
   }, []);
 
   useEffect(() => {

@@ -8,7 +8,7 @@ const RegisterChat = ({ setUsername }) => {
 
   const handleInput = (event) => {
     setUsernameString(event.target.value);
-    console.log(usernameString);
+
   };
 
   const handleClick = (event) => {
