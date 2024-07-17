@@ -73,8 +73,18 @@
 
 .sticky {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   width: 100px;
   height: auto;
+}
+
+.sitcky-message {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  bottom: 20px;
+  right: 112px;
+
+  z-index: 700;
 }

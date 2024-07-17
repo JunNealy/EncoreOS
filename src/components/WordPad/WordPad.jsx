@@ -2,6 +2,7 @@ import './WordPad.scss';
 import FileMenu from '../FileMenu/FileMenu';
 import Button from '../Button/Button';
 import { useState, useRef, useEffect } from 'react';
+import stickyText from '../../assets/images/StickyMessage.png';
 
 const WordPad = ({ onMouseDown }) => {
   const inputRef = useRef(null);
@@ -123,11 +124,18 @@ const WordPad = ({ onMouseDown }) => {
         dangerouslySetInnerHTML={{ __html: documentContent }}
       />
       {stickyIsVisible && (
-        <img
-          className="sticky"
-          src="./src/assets/images/Stickly.gif"
-          alt="It's sticky!"
-        />
+        <>
+          <img
+            className="sitcky-message"
+            src={stickyText}
+            alt="Sticky has things to say!"
+          />
+          <img
+            className="sticky"
+            src="./src/assets/images/Stickly.gif"
+            alt="It's sticky!"
+          />
+        </>
       )}
     </div>
   );

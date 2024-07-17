@@ -8,9 +8,9 @@ import grungusSleepy from '../../assets/images/Grungussleepy.gif';
 import './PetApp.scss';
 
 const PetApp = () => {
-  const [hunger, setHunger] = useState(100);
-  const [happiness, setHappiness] = useState(100);
-  const [hygiene, setHygiene] = useState(100);
+  const [hunger, setHunger] = useState(25);
+  const [happiness, setHappiness] = useState(44);
+  const [hygiene, setHygiene] = useState(2);
 
   const degradeHunger = () => {
     setHunger((prevHunger) =>
