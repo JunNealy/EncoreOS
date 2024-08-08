@@ -21,15 +21,13 @@ const Screen = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('wordpadData')) || {};
-
-  }, []);
 
   useEffect(() => {
     setFocusedApp(openApplications[0]);
   }, [openApplications]);
 
+
+  //Revise this as a find/filter function that takes a passed in app name, finds said apps object within the data file then builds an object with all of that app information to push into openApplications
   const startApplication = (appName) => {
     const newApplication = {
       id: openApplications.length + 1,
