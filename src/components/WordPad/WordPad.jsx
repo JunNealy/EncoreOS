@@ -1,8 +1,11 @@
-import './WordPad.scss';
-import FileMenu from '../FileMenu/FileMenu';
-import Button from '../Button/Button';
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+import stickyGif from '../../assets/images/Stickly.gif';
 import stickyText from '../../assets/images/StickyMessage.png';
+import Button from '../Button/Button';
+import FileMenu from '../FileMenu/FileMenu';
+
+import './WordPad.scss';
 
 const WordPad = ({ onMouseDown }) => {
   const inputRef = useRef(null);
@@ -18,6 +21,23 @@ const WordPad = ({ onMouseDown }) => {
     setLocalData(savedData);
   }, []);
 
+  useEffect(() => {
+    if (documentContent.length > 5) {
+      setStickyIsVisible(true);
+    } else {
+      setStickyIsVisible(false);
+    }
+  }, [documentContent]);
+
+  useEffect(() => {
+    localStorage.setItem('wordpadData', JSON.stringify(localData));
+  }, [localData]);
+
+  const createNewDocument = () => {
+    setDocumentName('');
+    setDocumentContent('');
+  };
+
   const saveData = () => {
     const newData = {
       ...localData,
@@ -27,11 +47,28 @@ const WordPad = ({ onMouseDown }) => {
     };
 
     setLocalData(newData);
-    localStorage.setItem('wordpadData', JSON.stringify(newData));
   };
+
+  useEffect(() => {
+    const handleNewLine = (event) => {
+      if (event.key === 'Enter') {
+        setTimeout(() => {
+          document.execCommand('justifyLeft', false, null);
+        }, 0);
+      }
+    };
+
+    const inputElement = inputRef.current;
+    inputElement.addEventListener('keydown', handleNewLine);
+
+    return () => {
+      inputElement.removeEventListener('keydown', handleNewLine);
+    };
+  }, []);
 
   const handleFormat = (formatCommand) => () => {
     document.execCommand(formatCommand, false, null);
+    document.execCommand('justifyLeft', false, null); // Reset alignment
   };
 
   const handleFontSizeChange = (fontSize) => {
@@ -40,8 +77,9 @@ const WordPad = ({ onMouseDown }) => {
   };
 
   const handleSelectFontSize = (event) => {
-    setFontSize(event.target.value);
-    handleFontSizeChange(fontSize);
+    const selectedFontSize = event.target.value;
+    setFontSize(selectedFontSize);
+    handleFontSizeChange(selectedFontSize);
   };
 
   const handleNameChange = (event) => {
@@ -54,16 +92,9 @@ const WordPad = ({ onMouseDown }) => {
 
   const handleFileItemClick = (fileName, content) => {
     setDocumentContent(content);
+    inputRef.current.innerHTML = content; // Manually update the contentEditable div
     setFileMenuIsVisible(false);
   };
-
-  useEffect(() => {
-    if (documentContent.length > 5) {
-      setStickyIsVisible(true);
-    } else {
-      setStickyIsVisible(false);
-    }
-  }, [documentContent]);
 
   return (
     <div className="wordpad" onMouseDown={onMouseDown}>
@@ -73,6 +104,11 @@ const WordPad = ({ onMouseDown }) => {
           {fileMenuIsVisible && (
             <div className="wordpad__toolbar-file-options-file-menu">
               <FileMenu files={localData} onItemClick={handleFileItemClick} />
+              <Button
+                label={'New Document'}
+                style={'start-button'}
+                onClick={createNewDocument}
+              />
               <Button
                 label={'Save'}
                 style={'start-button'}
@@ -107,6 +143,7 @@ const WordPad = ({ onMouseDown }) => {
           <select
             className="wordpad__toolbar-styling-font-size"
             onChange={handleSelectFontSize}
+            value={fontSize}
           >
             <option value="1">S</option>
             <option value="2">R</option>
@@ -130,11 +167,7 @@ const WordPad = ({ onMouseDown }) => {
             src={stickyText}
             alt="Sticky has things to say!"
           />
-          <img
-            className="sticky"
-            src="./src/assets/images/Stickly.gif"
-            alt="It's sticky!"
-          />
+          <img className="sticky" src={stickyGif} alt="It's sticky!" />
         </>
       )}
     </div>

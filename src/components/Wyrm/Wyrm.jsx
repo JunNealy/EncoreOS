@@ -6,9 +6,8 @@ import TitleScreen from './TitleScreen/TitleScreen';
 import gameStart from '../../assets/sound/FearTheWrym.mp3';
 
 const fear = new Audio(gameStart);
-// GAME INITIALIZATION VARIABLES
+
 const BOARD_SIZE = 15;
-// Randomize these later on maybe?
 const STARTING_WYRM = [{ x: 2, y: 2 }];
 const FIRST_VILLAGE = { x: 5, y: 5 };
 const UPDATE_INTERVAL = 200;
@@ -32,8 +31,6 @@ const Wyrm = () => {
     fear.play();
   };
 
-  //RESTART GAME LOGIC
-
   const restartGame = () => {
     setWyrm(STARTING_WYRM);
     setWyrmDirection({ x: 1, y: 0 });
@@ -44,7 +41,7 @@ const Wyrm = () => {
     fear.play();
   };
 
-  // BOARD CREATION LOGIC GOES HERE
+
   const createBoard = () => {
     const board = [];
     for (let row = 0; row < BOARD_SIZE; row++) {
@@ -85,7 +82,7 @@ const Wyrm = () => {
     return board;
   };
 
-  // CONTROLLER LOGIC
+
   useEffect(() => {
     const handleKeyPress = (event) => {
       switch (event.key) {
