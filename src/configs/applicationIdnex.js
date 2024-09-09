@@ -1,3 +1,4 @@
+import calcImage from '../assets/icons/EncoreOS-Calc.png';
 import Calculator from '../components/Calculator/Calculator';
 import Chat from '../components/Chat/Chat';
 import PetApp from '../components/PetApp/PetApp';
@@ -9,7 +10,7 @@ const applicationIndex = {
     {
       name: 'Calculator',
       app: Calculator,
-      icon: '../assets/icons/EncoreOS-Calc.png',
+      icon: calcImage,
     },
     {
       name: 'Chat',
