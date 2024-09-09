@@ -1,17 +1,16 @@
 @font-face {
-  font-family: "System Font";
-  src: url("./src/assets/fonts/w95fa.woff2") format("woff2");
+  font-family: 'System Font';
+  src: url('./src/assets/fonts/w95fa.woff2') format('woff2');
   weight: 400;
 }
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
 * {
-  font-family: "System Font";
+  font-family: 'System Font';
 }
 
 .calculator {
@@ -53,4 +52,4 @@
 .calculator_buttons-row-btn {
   height: 2rem;
   width: 25%;
-}/*# sourceMappingURL=Calculator.css.map */
+} /*# sourceMappingURL=Calculator.css.map */
