@@ -37,10 +37,9 @@ const Wyrm = () => {
     setVillage(FIRST_VILLAGE);
     setGameOver(false);
     setGameStarted(true);
-    setScore(o);
+    setScore(0);
     fear.play();
   };
-
 
   const createBoard = () => {
     const board = [];
@@ -81,7 +80,6 @@ const Wyrm = () => {
     }
     return board;
   };
-
 
   useEffect(() => {
     const handleKeyPress = (event) => {

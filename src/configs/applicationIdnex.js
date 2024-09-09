@@ -9,7 +9,7 @@ const applicationIndex = {
     {
       name: 'Calculator',
       app: Calculator,
-      icon: './src/assets/icons/EncoreOS-Calc.png',
+      icon: '../assets/icons/EncoreOS-Calc.png',
     },
     {
       name: 'Chat',
