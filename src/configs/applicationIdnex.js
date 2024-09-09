@@ -1,4 +1,8 @@
-import calcImage from '../assets/icons/EncoreOS-Calc.png';
+import calcIcon from '../assets/icons/EncoreOS-Calc.png';
+import chatIcon from '../assets/icons/EncoreOS-Messenger-Pigeon.png';
+import wordpadIcon from '../assets/icons/EncoreOS-WordPad.png';
+import virtualPetIcon from '../assets/images/Grungus.png';
+import wyrmIcon from '../assets/images/head.png';
 import Calculator from '../components/Calculator/Calculator';
 import Chat from '../components/Chat/Chat';
 import PetApp from '../components/PetApp/PetApp';
@@ -10,27 +14,27 @@ const applicationIndex = {
     {
       name: 'Calculator',
       app: Calculator,
-      icon: calcImage,
+      icon: calcIcon,
     },
     {
       name: 'Chat',
       app: Chat,
-      icon: './src/assets/icons/EncoreOS-Messenger-Pigeon.png',
+      icon: chatIcon,
     },
     {
       name: 'Wordpad',
       app: WordPad,
-      icon: './src/assets/icons/EncoreOS-WordPad.png',
+      icon: wordpadIcon,
     },
     {
       name: 'Wyrm',
       app: Wyrm,
-      icon: './src/assets/images/head.png',
+      icon: wyrmIcon,
     },
     {
       name: 'Virtual Pet',
       app: PetApp,
-      icon: './src/assets/images/Grungus.png',
+      icon: virtualPetIcon,
     },
   ],
 };
